@@ -1,0 +1,15 @@
+{% extends 'AlectisLabAcmsBundle:Base:base_admin.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}
+
+{% block body%}
+{{ parent() }}
+    <div class="width100pct marginHeader">
+        <div class="jumbotron">
+            <h1>Interface d'administration</h1>
+            <p class="lead">Bienvenue sur l'interface d'administration</p>
+
+        </div>
+    </div>
+{% endblock %}

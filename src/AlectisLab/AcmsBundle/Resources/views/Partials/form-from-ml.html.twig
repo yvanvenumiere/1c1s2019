@@ -1,0 +1,560 @@
+<form id="form{{ itemTypeId }}">
+    {% if modelLines|length>0 %}
+    {% for model in modelLines %}
+
+            {% if model.ml_type_code=="text" or model.ml_type_code=="double_or_int" or model.ml_type_code=="email" or model.ml_type_code=="int" or model.ml_type_code=="date" or model.ml_type_code=="color" %}
+                {% if model.ml_maxlength<100 or model.ml_type_code=="email" or model.ml_type_code=="color"%}
+                        <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                                <label>{{ model.ml_name }}
+                                    {% if model.ml_explications|length>0 %}
+                                        <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                                    {% endif %}</label>
+                                <input type="text" {% if model.ml_type_code=="color" and item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]|length>0 %} style="background-color:{{ item.fieldValues[model.ml_code] }};" {% endif %} class="form-control {% if model.ml_type_code=="color" %} colorField {% endif %} {% if model.ml_type_code=="date" %} datepicker {% endif %}" id="{{ model.ml_code }}" {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]|length>0%} {% if model.ml_type_code=="date" %} value="{{ item.fieldValues[model.ml_code]|date('d/m/Y') }}" {% else %} value="{{ item.fieldValues[model.ml_code] }}" {% endif %}{% endif %} {% if model.ml_readonly==1 %} readonly="yes" {% endif %}/>
+                                <!--<small id="{{ model.ml_code }}_help" class="form-text text-muted"></small>-->
+                        </div>
+                {% else %}
+                        <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                            <label>{{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                                    <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                                {% endif %}</label>
+                            <textarea {% if model.ml_readonly==1 %} readonly="yes" {% endif %} class="form-control" id="{{ model.ml_code }}" rows="3">{% if item is defined and item.fieldValues[model.ml_code] is defined %}{{ item.fieldValues[model.ml_code]|raw }}{% endif %}</textarea>
+
+                        </div>
+                {% endif %}
+
+            {% endif %}
+            {% if model.ml_type_code=="bool" %}
+                <div class="{% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                    <label >
+                        <input id="{{ model.ml_code }}" type="checkbox" {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]==1%}ischecked="1" checked="checked"{% else %}ischecked="0"{% endif %} class=" customCheckbox">
+                        {{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                            <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                        {% endif %}
+                    </label>
+
+                </div>
+
+            {% endif %}
+
+                {% if model.ml_type_code=="gps" %}
+
+
+                <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                    <label>{{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                            <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                        {% endif %}</label>
+                    {% set normalFieldValue="" %}
+
+                    {% set mapFieldValue="" %}
+                    {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]|length>0 %}
+                        {% set tempFV=item.fieldValues[model.ml_code]|split('||') %}
+                        {% set normalFieldValue=tempFV[0] %}
+                        {% set mapFieldValue=tempFV[1] %}
+                    {% endif %}
+                    <input type="text"  class="form-control gpsField " id="gpsField_{{ model.ml_code }}" value="{{ normalFieldValue }}"/>&nbsp; <i class="clickable markerTrigger fa fa-map-marker" id="markerTrigger_{{ model.ml_code }}"></i>
+                    <input type="hidden" id="{{ model.ml_code }}"  {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]|length>0 %} value="{{ item.fieldValues[model.ml_code] }}" {% endif %}/>
+                    <div class="gpsArea" mapValue="{{ mapFieldValue }}" id="gpsArea_{{ model.ml_code }}"></div>
+
+                </div>
+
+                {% endif %}
+
+            {% if model.ml_type_code=="text_html" %}
+                <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                    <label>{{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                            <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                        {% endif %}</label>
+                    <textarea class="form-control rteField" id="{{ model.ml_code }}" rows="20">{% if item is defined and item.fieldValues[model.ml_code] is defined %}{{ item.fieldValues[model.ml_code]|raw }}{% endif %}</textarea>
+                </div>
+
+            {% endif %}
+            {% if model.ml_type_code=="pictures" or model.ml_type_code=="picture" or model.ml_type_code=="file" or model.ml_type_code=="files"%}
+                <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                    <label>{{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                            <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                        {% endif %}</label>
+                    <div class="uploaderDiv" id="{{ model.ml_code }}" isPicture="{% if model.ml_type_code=="picture" or model.ml_type_code=="pictures"%}yes{% else %}no{% endif %}" canBeMultiple="{% if model.ml_type_code=="picture" or model.ml_type_code=="file"%}no{% else %}yes{% endif %}" ></div>
+                </div>
+
+            {% endif %}
+
+                {% if model.ml_type_code=="fk" or model.ml_type_code=="choice_list"%}
+                    <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                        <label>{{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                                <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                            {% endif %}</label>
+                        <select class="form-control" id="{{ model.ml_code }}">
+                            {% if model.possibleValues is defined %}
+                                <option value=""></option>
+                                {% for value in model.possibleValues %}
+                                    <option value="{{ value.iditem }}" {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]==value.iditem %} selected="selected" {% else %} {% if filtering!=false and filtering.col==model.ml_code and filtering.value==value.iditem %} selected="selected" {% endif %}{% endif %}>
+                                        {{ value.fields[model.fk_col] }}
+
+                                    </option>
+                                {% endfor %}
+                            {% endif %}
+                            {% if model.listValues is defined %}
+                                <option value=""></option>
+                                {% for value in model.listValues %}
+                                    <option value="{{ value }}" {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]==value %} selected="selected" {% else %} {% if filtering!=false and filtering.col==model.ml_code and filtering.value==value %} selected="selected" {% endif %}{% endif %}>
+                                        {{ value }}
+
+                                    </option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+
+                {% endif %}
+
+        {% if model.ml_type_code=="fkmul" or model.ml_type_code=="choice_list_mul"%}
+            <div class="form-group {% if model.ml_is_in_crud!=1 %} dNone {% endif %}">
+                <label>{{ model.ml_name }}{% if model.ml_explications|length>0 %}
+                        <span class="font-italic text-muted ">
+                                         ( {{ model.ml_explications }} )
+                                    </span>
+                    {% endif %}</label>
+                {% if model.possibleValues is defined %}
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="hidden" id="{{ model.ml_code }}"/>
+                            {% for value in model.possibleValues %}
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input value="{{ value.iditem }}" class="form-check-input customCheckbox {{ model.ml_code }}-groupcb" {% if item is defined and item.fieldValues[model.ml_code] is defined and value.iditem in item.fieldValues[model.ml_code~"_fkmulIds"] %} ischecked="1" checked="checked" {% else %} {% if filtering!=false and filtering.col==model.ml_code and filtering.value==value.iditem %} ischecked="1" checked="checked" {% endif %}{% endif %} type="checkbox">
+                                        {{ value.fields[model.fk_col] }}
+                                        <i class="input-helper"></i></label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+
+    {% endfor %}
+    <div class="relative tar">
+        <button type="button" id="submit{{ itemTypeId }}" class="btn clickable btn-primary">Enregistrer</button>
+    </div>
+    {% else %}
+        <p>Aucun champs à enregistrer défini</p>
+    {% endif %}
+
+</form>
+
+<script type="text/javascript">
+
+    var maps={};
+    var lastIdFd;
+    //initialisation du date picker sur tous les dates picker
+    $('.datepicker').pickadate
+    ({
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+        weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'jeu', 'ven', 'Sam'],
+        today: "Aujourd'hui",
+        clear: 'Effacer',
+        close: 'Fermer',
+
+        // Accessibility labels
+        labelMonthNext: 'Mois suivant',
+        labelMonthPrev: 'Mois précédent',
+        labelMonthSelect: 'Sélectionner un mois',
+        labelYearSelect: 'Sélectionner une année',
+
+        // Formats
+        format: 'dd/mm/yyyy',
+    });
+
+    $('.colorField').colorpicker({});
+    $('.colorField').blur(function()
+    {
+        $(this).css('background-color',$(this).val());
+    });
+
+    //isChecked yes or no sur toutes les checkBox
+    $(".customCheckbox").unbind('click');
+    $(".customCheckbox").click(function()
+    {
+        if($(this).attr('ischecked')==1)
+        {
+            $(this).attr('ischecked',0);
+        }
+        else
+        {
+            $(this).attr('ischecked',1);
+        }
+    });
+
+    $(".markerTrigger").click(function()
+    {
+        var idFd=GV.getJsId("markerTrigger_",$(this).attr('id'));
+        handleMap(idFd,true);
+
+    });
+
+    var cartes=$(".gpsArea");
+    for(var i=0;i<cartes.length;i++)
+    {
+        var idFd=GV.getJsId("gpsArea_",$(cartes[i]).attr('id'));
+        handleMap(idFd,false);
+    }
+
+    //évènement sur le bouton de soumission du formulaire
+    $('#submit{{ itemTypeId }}').unbind('click');
+    $('#submit{{ itemTypeId }}').click(function()
+    {
+
+        if(typeof(editors)!="undefined")
+        {
+            for(var i=0;i<editors.length;i++)
+            {
+                $("#"+$(editors[i]['element']).attr('id')).html(editors[i].getData());
+            }
+        }
+
+
+
+        var datasToSend={};
+        {% for model in modelLines %}
+
+        {% if model.ml_code=="gps" %}
+            if($("#{{ model.ml_code }}").val()=="")
+            {
+                //handleMap(concernedCode,true);
+            }
+            else
+            {
+                refreshMapData("{{  model.ml_code }}");
+            }
+        {% endif %}
+
+
+        {% if model.ml_type_code=="fkmul" %}
+        var value="";
+        var cbs=$(".{{ model.ml_code }}-groupcb");
+        for(var i=0;i<cbs.length;i++)
+        {
+
+            if($(cbs[i]).attr('ischecked')=="1")
+            {
+                value+=$(cbs[i]).attr('value')+"|";
+            }
+        }
+
+        $('#{{ model.ml_code }}').val(value);
+
+        {% endif %}
+
+
+
+        datasToSend['{{ model.ml_code }}']=$("#{{ model.ml_code }}").val();
+
+        {% endfor %}
+
+
+        //données de checkboxes
+        var theCheckBoxes=$('.customCheckbox');
+        for(var i=0;i<theCheckBoxes.length;i++)
+        {
+            datasToSend[$(theCheckBoxes[i]).attr('id')]=$(theCheckBoxes[i]).attr('ischecked');
+        }
+
+        //données de date
+        var theDates=$('.datepicker');
+        for(var i=0;i<theDates.length;i++)
+        {
+            if($(theDates[i]).val()!='')
+            {
+                datasToSend[$(theDates[i]).attr('id')]=getTimeFromFormatedDate("dd/mm/yyyy","/",$(theDates[i]).val());
+            }
+
+        }
+
+
+        for(var fUpload in uploaderInstances)
+        {
+            datasToSend[fUpload]=uploaderInstances[fUpload].getUploads();
+            //console.log(uploaderInstances[fUpload].getUploads());
+        }
+
+
+        //paramètre d'itemId selon contexte
+        {% if item==0 %}
+        {% set itemIdParam = 0  %}
+        {% else %}
+        {% set itemIdParam = item.entity.iditem  %}
+        {% endif %}
+
+        //waiter
+        GV.cssWaiter.show("#form{{ itemTypeId }}","bottom");
+        $.ajax({
+            type: 'POST',
+            url: '{{ path('save_item',{itemTypeId:itemTypeId,itemId:itemIdParam}) }}',
+            data:datasToSend,
+            success: function(retour)
+            {
+                $(".form-control").removeClass('is-invalid');
+
+                if(retour.result=="ok")
+                {
+
+                    if(GV.previousPage!=false)
+                    {
+                        //GV.cssWaiter.hide()
+                        $("#contCrud").load(GV.previousPage,function()
+                        {
+
+                            GV.cssWaiter.hide();
+                            GV.previousPage=false;
+                            $(".container-scroller").scrollTop(0);
+                            new Noty({
+
+                                text: retour.message,
+                                timeout:4000,
+                                type:"success"
+
+                        }).show();
+
+
+                        });
+
+                    }
+                }
+                else
+                {
+                    var messageRetour="<strong>"+retour.message+"</strong>";
+
+
+                    if(retour.errors)
+                    {
+                        for(var erreur in retour.errors)
+                        {
+                            $('#'+erreur).addClass("is-invalid");
+                            messageRetour+="<br/>"+retour.errors[erreur];
+                        }
+                    }
+                    //GV.cssWaiter.showResult(messageRetour,"danger","bottom");
+                    GV.cssWaiter.hide();
+                    new Noty({
+
+                        text: messageRetour,
+                        timeout:4000,
+                        type:"error"
+
+                    }).show();
+                }
+
+
+            },
+            dataType: 'json'
+        });
+
+    });
+
+
+    var uploadsDiv=$(".uploaderDiv");
+
+    var uploaderInstances={};
+    for(var i=0;i<uploadsDiv.length;i++)
+    {
+        var multipleVar=($(uploadsDiv[i]).attr('canBeMultiple')=="yes"?true:false);
+        var pathUploadPreview=($(uploadsDiv[i]).attr('isPicture')=="yes"?'{{ path('upload_img_for_preview') }}':'{{ path('upload_img_for_preview',{type:'file'}) }}');
+        //console.log($(uploadsDiv[i]).attr('canBeMultiple'));
+        uploaderInstances[$(uploadsDiv[i]).attr('id')] = new qq.FineUploader({
+            element: document.getElementById($(uploadsDiv[i]).attr('id')),
+            request:
+                {
+                    endpoint: pathUploadPreview
+                },
+            deleteFile: {
+                enabled: true, // defaults to false
+                endpoint: '{{ path('delete_img_for_preview') }}'
+            },
+            {% if item is defined and item!=0 %}
+            session : {
+                endpoint: '{{ path('existing_img_for_preview') }}/'+$(uploadsDiv[i]).attr('id')+"/{{ item.entity.iditem }}",
+                refreshOnRequest:true
+            },
+            {% endif %}
+
+
+            callbacks:
+                {
+                    onComplete: function(id, filename, responseJSON)
+                    {
+                        /*if (responseJSON.success) {
+                         var item = uploader._getItemByFileId(id);
+                         var myElement = uploader._getElement(item, 'myCustomClass');
+                         myElement.style.display = 'inline-block';
+                         }*/
+                        //console.log(responseJSON);
+
+                    }
+                },
+            multiple:multipleVar
+
+        });
+    }
+
+    var rtes=$(".rteField");
+    var editors=new Array();
+    for(var i=0;i<rtes.length;i++)
+    {
+
+        ClassicEditor
+            .create( document.querySelector( "#"+$(rtes[i]).attr('id') ) )
+            .then(editor=>{editors.push(editor);})
+            .catch( error => {
+            console.error( error );
+    } );
+    }
+
+
+
+    function refreshMapData(idFd)
+    {
+        $("#"+idFd).val($("#gpsField_"+idFd).val()+"||"+$("#gpsArea_"+idFd).attr('mapValue'));
+    }
+    function handleMap(idFd,fromClick)
+    {
+
+        lastIdFd=idFd;
+        if(typeof(maps[idFd])=="undefined")
+        {
+            maps[idFd]={egm:new easyGmap("map"+idFd,"gpsArea_"+idFd)};
+        }
+        var tmpEgm=maps[idFd]['egm'];
+
+        if(fromClick)
+        {
+            tmpEgm.geocodeFromDatas("adresse",$("#gpsField_"+idFd).val(),function(datas)
+            {
+                var theLat;
+                var theLng;
+                if(datas.result==false)
+                {
+                    theLat=48.863611;
+                    theLng=2.348722;
+                }
+                else
+                {
+                    theLat=datas.content[0]['geometry']['location'].lat();
+                    theLng=datas.content[0]['geometry']['location'].lng();
+                }
+                mapConfig(idFd,theLat,theLng,false);
+            });
+        }
+        else
+        {
+            var coors=$("#gpsArea_"+idFd).attr('mapValue');
+            if(coors.length>0)
+            {
+                var arrayCoors=coors.split('_');
+                mapConfig(idFd,arrayCoors[0],arrayCoors[1],true);
+            }
+        }
+
+    }
+
+    function markerHandling(map,marker)
+    {
+        map.removeMarkers();
+
+        map.addMarker(marker);
+    }
+
+    function mapConfig(idFd,lat,lng,setMarker)
+    {
+        //console.log("mapconfig");
+        var latLng={lat:lat,lng:lng};
+        var theMap=maps[idFd]['egm'];
+
+        theMap.init({
+            _latLng:latLng,
+            _zoomLevel: 9,
+            _realLatLng:false
+        });
+
+        $("#gpsArea_"+idFd).css('height',"200px");
+        theMap.addEventListener('click',chooseLocation,'chooseLocation');
+
+        if(setMarker)
+        {
+            var aMarker=new customMarker
+            (
+                {
+                    _instanceName:"theMarker"+idFd,
+                    _latLng:{lat:lat,lng:lng},
+                    //_objectLatLng:datas.latLng,
+                    _title:"",
+                    _datas:null,
+                    _iconLink:null
+                }
+            );
+            markerHandling(theMap,aMarker);
+
+        }
+        else
+        {
+            new Noty({
+
+                text: "Cliquez sur la carte pour définir la localisation",
+                timeout:4000,
+                type:"warning"
+
+            }).show();
+        }
+
+    }
+
+
+
+    function chooseLocation(datas)
+    {
+        var tmpEgm=maps[lastIdFd]['egm'];
+        var lat=datas.latLng.lat();
+        var lng=datas.latLng.lng();
+
+        $("#"+lastIdFd).val($("#gpsField_"+lastIdFd).val()+"||"+lat+"_"+lng);
+        $("#gpsArea_"+lastIdFd).attr('mapValue',lat+"_"+lng);
+        var aMarker=new customMarker
+        (
+            {
+                _instanceName:"theMarker"+lastIdFd,
+                _latLng:{lat:lat,lng:lng},
+                //_objectLatLng:datas.latLng,
+                _title:"",
+                _datas:null,
+                _iconLink:null
+            }
+        );
+
+        markerHandling(tmpEgm,aMarker);
+    }
+
+
+
+
+
+
+</script>

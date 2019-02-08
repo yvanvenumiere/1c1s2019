@@ -1,0 +1,320 @@
+
+<div class="relative tar">
+    <!--<div class="iconIonic addElem ion-android-add" data-pack="android" data-tags="plus, include, invite"></div>-->
+    <p class=" addElem clickable">Nouveau <i class="fa fa-plus"></i></p>
+</div>
+{% if items|length>0 %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+
+            {% for model in modelLines %}
+                {% if model.ml_is_in_list %}
+                    <th class="tac">
+                        {{ model.ml_name }} <br/>
+                        {% if filtering==false %}
+                        <div class="divsort">
+                            <i id="fa-sort-asc_{{ model.ml_code }}" class="fa clickable fa-sort-asc faSort"></i><br/><i id="fa-sort-desc_{{ model.ml_code }}" class="fa fa-sort-desc clickable faSort"></i>
+                        </div>
+                        {% endif %}
+                    </th>
+                {% endif %}
+            {% endfor %}
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+            <!--<th>tata</th>-->
+            {% for item in items %}
+            <tr>
+                {% for model in modelLines %}
+                    {% if model.ml_is_in_list %}
+                        <td class="tac">
+                            {% if item.fields[model.ml_code] is defined and item.fields[model.ml_code]|length>0%}
+                                {% if model.ml_type_code=="date" %}
+                                    {{ item.fields[model.ml_code]|date('d/m/Y') }}
+                                {% elseif model.ml_type_code=="bool" %}
+                                    {% if item.fields[model.ml_code]==0 %} non {% else %} oui {% endif %}
+                                {% elseif model.ml_type_code=="picture" or model.ml_type_code=="pictures" %}
+                                    <i class="imgPicLink clickable fa fa-file-photo-o"  pics="{{ item.fields[model.ml_code] }}"></i>
+
+                                {% else %}
+                                    {{ item.fields[model.ml_code] }}
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                {% endfor %}
+                <td>
+                    <!--<span class="iconIonic2 ion-edit editItem"  data-pack="default" data-tags="change, update, write, type, pencil"></span>-->
+                    <span class="clickable viewItem tooltip2" title="Afficher" id="viewItem_{{ item.iditem }}"><i class="fa fa-search"></i></span>
+                    <span class="clickable editItem tooltip2" title="Modifier" id="editItem_{{ item.iditem }}"><i class="fa fa-edit"></i></span> &nbsp;
+                    <span class="clickable deleteItem tooltip2" title="Supprimer" id="deleteItem_{{ item.iditem }}"><i class="fa fa-trash-o"></i></span>
+                    {% for another in itemTypeChild %}
+                        <span class="clickable anotherActionLink tooltip2" title="{{ another.it_name }}" colvalue="{{ item.iditem }}" colcode="{{ another.ml_code }}" ittId="{{ another.iditem_types }}" >{% if another.html_link|length>0 %} {{ another.html_link|raw }} {% else %} {{ another.it_name }} {% endif %}</span>
+
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+
+
+
+
+
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination">
+            {% if currentPage>1 %}
+            <li class="page-item">
+                <a class="page-link page-num-link" listLink="{{ path('backend_item_list',{itemTypeId:itemTypeId,page:currentPage-1,sort:sort,order:order}) }}" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            {% endif %}
+            {% for i in 0..numPages-1 %}
+                <!--<li  class=" page-item {% if i+1==currentPage %}active {% endif %}"  ><a>{{ i+1 }}</a></li>-->
+                <li class="page-item {% if i+1==currentPage %}active {% endif %}"><a class="page-link page-num-link" listLink="{{ path('backend_item_list',{itemTypeId:itemTypeId,page:i+1,sort:sort,order:order}) }}" href="#">{{ i+1 }}</a></li>
+
+            {% endfor %}
+
+            {% if currentPage<numPages %}
+            <li class="page-item">
+                <a class="page-link page-num-link" listLink="{{ path('backend_item_list',{itemTypeId:itemTypeId,page:currentPage+1,sort:sort,order:order}) }}"href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+{% else %}
+    <p>Aucun élément à afficher</p>
+{% endif %}
+
+<script type="text/javascript">
+
+    $('.tooltip2').tooltipster();
+
+    var filtering={% if filtering!=false %} {{ filtering|raw }} {% else %} false {% endif %};
+    $("#arianeFil").html('');
+    {% for br in breadcrumb %}
+    $('#arianeFil').append('<li class="breadcrumb-item"><a class="aBreadCrumb"  href="{{ br.url }}">{{ br.name }}</a></li>');
+    {% endfor %}
+
+    $(".aBreadCrumb").unbind('click');
+    $(".aBreadCrumb").click(function(event)
+    {
+        event.preventDefault();
+        GV.cssWaiter.show("#contCrud");
+        $("#contCrud").load($(this).attr('href'),function()
+        {
+            GV.cssWaiter.hide();
+        });
+    });
+
+    $(".page-num-link").unbind('click');
+    $(".page-num-link").click(function(event)
+    {
+        event.preventDefault();
+        GV.cssWaiter.show("#contCrud");
+        $("#contCrud").load($(this).attr('listLink'),function()
+        {
+            GV.cssWaiter.hide();
+        });
+    });
+
+
+    $('.faSort').unbind('click');
+    $('.faSort').click(function()
+    {
+        //alert(GV.getJsId("fa-sort-asc_",$(this).attr('id')));
+        var order;
+        if($(this).hasClass('fa-sort-asc'))
+        {
+            var codeSort=GV.getJsId("fa-sort-asc_",$(this).attr('id'));
+            order="asc";
+        }
+        else
+        {
+            var codeSort=GV.getJsId("fa-sort-desc_",$(this).attr('id'));
+            order="desc";
+        }
+
+
+        var currentUrl="{{ path(app.request.attributes.get('_route'),
+                    app.request.attributes.get('_route_params')) }}";
+
+        var expUrl=currentUrl.split("/");
+        //console.log(expUrl[expUrl.length-2]);
+        if(!GV.isInt(expUrl[expUrl.length-2]))
+        {
+            var tmpUrl="";
+            for(var i=0;i<expUrl.length;i++)
+            {
+                if(i<expUrl.length-2)
+                {
+                    tmpUrl+=expUrl[i]+"/";
+                }
+
+            }
+            tmpUrl+=codeSort+"/"+order;
+            currentUrl=tmpUrl;
+        }
+        else
+        {
+            currentUrl+="/"+codeSort+"/"+order;
+        }
+
+        GV.cssWaiter.show("#contCrud","top");
+        $("#contCrud").load(currentUrl,function()
+        {
+            GV.cssWaiter.hide();
+
+        });
+    });
+
+
+
+    $(".addElem").unbind('click');
+    $(".addElem").click(function()
+    {
+        GV.previousPage="{{ path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) }}";
+
+        GV.cssWaiter.show("#contCrud","top");
+        {% if filteringRaw!=false %}
+        {% set urlNew= path('new_item',{itemTypeId:itemTypeId,col:filteringRaw.col,value:filteringRaw.value}) %}
+        {% else %}
+        {% set urlNew=path('new_item',{itemTypeId:itemTypeId}) %}
+        {% endif %}
+        $("#contCrud").load("{{ urlNew }}",function()
+        {
+            GV.cssWaiter.hide();
+        });
+    });
+
+    $(".editItem").unbind('click');
+    $(".editItem").click(function()
+    {
+        GV.previousPage="{{ path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) }}";
+
+        GV.cssWaiter.show("#contCrud","top");
+        $("#contCrud").load(GV.urlPrefix+"backend/edititem/{{ itemTypeId }}/"+GV.getJsId("editItem_",$(this).attr('id')),function()
+        {
+            GV.cssWaiter.hide();
+        });
+    });
+
+    $(".viewItem").unbind('click');
+    $(".viewItem").click(function()
+    {
+        GV.previousPage="{{ path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) }}";
+
+        GV.cssWaiter.show("#contCrud","top");
+        $("#contCrud").load(GV.urlPrefix+"backend/viewitem/{{ itemTypeId }}/"+GV.getJsId("viewItem_",$(this).attr('id')),function()
+        {
+            GV.cssWaiter.hide();
+        });
+    });
+
+    $(".anotherActionLink").unbind('click');
+    $(".anotherActionLink").click(function()
+    {
+        GV.previousPage="{{ path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) }}";
+        var itId=$(this).attr('ittId');
+
+        var urlChildren=GV.urlPrefix+"backend/listitems/"+itId+"/1/item_date_creation/desc/"+$(this).attr('colcode')+"/"+$(this).attr('colvalue');
+        $("#contCrud").load(urlChildren,function()
+        {
+            GV.cssWaiter.hide();
+        });
+    });
+
+    $(".deleteItem").unbind('click');
+    $(".deleteItem").click(function()
+    {
+        var urlDelete=GV.urlPrefix+"backend/deleteitem/{{ itemTypeId }}/"+GV.getJsId("deleteItem_",$(this).attr('id'));
+
+
+        bootbox.confirm({
+
+            message: "Etes vous sûr de vouloir effacer cet élément ?",
+            buttons: {
+                cancel: {
+                    label: ' Non'
+                },
+                confirm: {
+                    label: ' Oui'
+                }
+            },
+            callback: function(result)
+            {
+                /* result is a boolean; true = OK, false = Cancel*/
+                if(result)
+                {
+                    GV.cssWaiter.show("#contCrud");
+
+                    $.ajax({
+                        type: 'POST',
+                        url: urlDelete,
+                        data:{},
+                        success: function(retour)
+                        {
+                            if(retour.result=="ok")
+                            {
+
+                                //GV.cssWaiter.hide();
+                                var currentPage="{{ path(app.request.attributes.get('_route'),
+                                app.request.attributes.get('_route_params')) }}";
+
+                                $("#contCrud").load(currentPage,function()
+                                {
+                                    GV.cssWaiter.hide();
+                                    new Noty({
+
+                                        text: retour.message,
+                                        timeout:4000,
+                                        type:"success"
+
+                                    }).show();
+                                });
+                            }
+                            else
+                            {
+                                var messageRetour="<strong>"+retour.message+"</strong>";
+                                new Noty({
+
+                                    text: retour.message,
+                                    timeout:4000,
+                                    type:"error"
+
+                                }).show();
+                                GV.cssWaiter.hide();
+                            }
+
+
+                        },
+                        dataType: 'json'
+                    });
+                }
+            }
+        });
+
+
+    });
+</script>

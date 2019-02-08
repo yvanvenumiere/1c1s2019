@@ -1,0 +1,1 @@
+<?php $datasManager=new mediasDatasManager(); $oneElement=new medias(); ?>

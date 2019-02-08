@@ -1,0 +1,1 @@
+<?php $datasManager=new usersDatasManager(); $oneElement=new users(); ?>

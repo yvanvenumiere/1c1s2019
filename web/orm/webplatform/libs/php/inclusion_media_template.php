@@ -1,0 +1,1 @@
+<?php $datasManager=new media_templateDatasManager(); $oneElement=new media_template(); ?>

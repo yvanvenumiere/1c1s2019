@@ -1,0 +1,1 @@
+<?php $datasManager=new cat_pricesDatasManager(); $oneElement=new cat_prices(); ?>

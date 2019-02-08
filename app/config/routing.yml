@@ -1,0 +1,10 @@
+alectis_lab_utils:
+    resource: "@AlectisLabUtilsBundle/Controller/"
+    type:   annotation
+
+alectis_lab_acms:
+    resource: '@AlectisLabAcmsBundle/Controller/'
+    type: annotation
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

@@ -1,0 +1,1 @@
+<?php $datasManager=new db_instanceDatasManager(); $oneElement=new db_instance(); ?>

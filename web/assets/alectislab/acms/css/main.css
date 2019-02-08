@@ -1,0 +1,85 @@
+/**********FACTOR****************/
+*{padding:0;margin:0; border:0;}
+.width100pct{width:100%;}
+.absolute{position:absolute;}
+.relative{position:relative;}
+.fl{float:left;}
+.fr{float:right;}
+.clr{clear:both;}
+.mAuto{margin:auto;}
+.clickable{cursor:pointer;}
+.noClick{cursor:initial !important;}
+.policeArial{font-family:Arial;}
+.policeGeorgia{font-family:Georgia;}
+.dBlock{display:block;}
+.dInline{display:inline;}
+.bold{font-weight:bold;}
+.noBold{font-weight:normal !important;}
+.underlined{text-decoration: underline !important;}
+.noDecoration{text-decoration:none;}
+.fieldErrorClass{border:1px solid red !important;}
+.noBgRepeat{background-repeat:no-repeat;}
+.mAuto{margin:auto;}
+.noBullet{list-style-type: none;}
+
+.bgRepeatX{background-repeat:repeat-x;}
+.tal{text-align:left !important;}
+.tac{text-align:center;}
+.tar{text-align:right !important;}
+.taj{text-align:justify;}
+.ttup{text-transform:uppercase;}
+.ttnormal{text-transform:none !important;}
+.textItalic{font-style:italic;}
+.bRed{background-color:red;}
+.hidden{visibility:hidden;}
+.tun{text-decoration:underline;}
+.pad10{padding:10px;}
+.pad10Verti{padding-top:10px;padding-bottom:10px;}
+.mTopbt{margin-top:10px;}
+.noMgBottomImportant{margin-bottom:0px !important;}
+.dNone{display:none;}
+.topRight{top:0px;right:0px;}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.form-control{margin-top:8px;}
+
+.marginHeader
+{
+    margin-top:70px;
+}
+
+.widthStandard{width:1000px;}
+
+#contList{min-height:100px;}
+
+.iconIonic{font-size:40px;display:inline;cursor: pointer;}
+.iconIonic2{font-size:18px;display:inline;cursor: pointer;}
+.ck-editor__editable {
+    min-height: 400px;
+}
+
+.ombre1
+{
+    -moz-box-shadow: 0px 0px 3px #CCCCCC;
+    -webkit-box-shadow: 0px 0px 3px #CCCCCC;
+    box-shadow: 0px 0px 3px #CCCCCC;
+}
+
+.is-invalid
+{
+    -moz-box-shadow: 0px 0px 3px red;;
+    -webkit-box-shadow: 0px 0px 3px red;
+    box-shadow: 0px 0px 3px red;
+}
+
+.customCheckbox{min-height:0px !important;}
+.mt5{margin-top:5px;}
+.cbSpecial
+{background-color:#FFFFFF;margin-top:7px;}
+.divsort {position:relative;}
+.divsort .fa-sort-asc{position:absolute;top:-3px;}
+.divsort .fa-sort-desc{position:absolute;bottom:0px;}
+.gpsField{display:inline !important;width:98%}

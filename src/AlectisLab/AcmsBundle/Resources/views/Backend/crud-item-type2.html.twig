@@ -1,0 +1,73 @@
+{% extends 'AlectisLabAcmsBundle:Base:base_admin_structured.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        GV.launchFunction=function()
+        {
+            GV.cssWaiter.show("#contCrud","top");
+            $("#contCrud").load("{{ path('backend_item_list',{itemTypeId:itemTypeId,page:1}) }}",function()
+            {
+
+                GV.cssWaiter.hide();
+
+            });
+
+
+            {% if app.flashes('itemType') is defined %}
+            {% for elem in app.flashes('itemType') %}
+            $('#arianeFil').append("<li class='breadcrumb-item'><a href='#'>{{ elem }}</a></li>")
+
+            {% endfor %}
+
+            {% endif %}
+        };
+
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    {{ parent() }}
+
+    <div class="card">
+        <div class="card-body">
+            <div id="contBreadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol id="arianeFil" class="breadcrumb">
+
+
+
+                    </ol>
+                </nav>
+            </div>
+            <div id="contCrud" class="relative">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="confirmModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalTitle">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmModalBody">Etes vous sur de votre choix</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Oui</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

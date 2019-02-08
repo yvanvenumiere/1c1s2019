@@ -1,0 +1,76 @@
+#content
+{
+	/*margin-top:50px !important;*/
+}
+
+.myTab thead
+{
+	background-color:#000000;
+}
+.myTab{border:1px solid black;}
+.myTab td{text-align:center;}
+
+#gridContainer{position:relative;}
+
+.clickable
+{
+	cursor:pointer;
+}
+
+#popupFiche{background-color:#ffffff;/*padding:60px;*/}
+
+#btShut{position:absolute !important;right:10px !important;top:10px !important;}
+
+.myTab{width:810px !important;}
+#addElement
+{
+	position:absolute !important;
+	top:10px !important;
+	right:10px !important;
+}
+
+.uploadField
+{
+	width:350px;
+	height:40px;
+	overflow:hidden;
+	position:relative;
+	cursor:pointer;
+}
+
+.cbLabel
+{
+	display:inline !important;
+}
+
+.errorField{border:1px solid red !important;}
+
+#popupFiche form{padding-left:25px;}
+.width940{width:940px;}
+
+.mAuto{margin:auto;}
+.relative{position:relative;}
+
+/*******AUTH*************/
+#contAuth
+{
+	width:240px;
+	margin-top:100px;
+	padding-top:20px;
+}
+
+#disconnectLink
+{
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	position:absolute;right:5px;
+	top:5px;color:white;
+}
+
+#disconnectLink a
+{
+	color:white;text-decoration:none;
+}
+
+

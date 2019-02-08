@@ -1,0 +1,404 @@
+{% extends 'AlectisLabAcmsBundle:Base:base_admin_structured.html.twig' %}
+{% block title %}Administration - Données diverses{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var idProj={{ iddp }};
+        var maps={};
+        var lastIdFd;
+        GV.launchFunction=function()
+        {
+            $('.datepicker').pickadate
+            ({
+                monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthsShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'jeu', 'ven', 'Sam'],
+                today: "Aujourd'hui",
+                clear: 'Effacer',
+                close: 'Fermer',
+
+                // Accessibility labels
+                labelMonthNext: 'Mois suivant',
+                labelMonthPrev: 'Mois précédent',
+                labelMonthSelect: 'Sélectionner un mois',
+                labelYearSelect: 'Sélectionner une année',
+
+                // Formats
+                format: 'dd/mm/yyyy',
+            });
+
+
+
+            $(".markerTrigger").click(function()
+            {
+                var idFd=GV.getJsId("markerTrigger_",$(this).attr('id'));
+                handleMap(idFd,true);
+
+            });
+
+            var cartes=$(".gpsArea");
+            for(var i=0;i<cartes.length;i++)
+            {
+                var idFd=GV.getJsId("gpsArea_",$(cartes[i]).attr('id'));
+                handleMap(idFd,false);
+            }
+
+
+
+            $('.colorField').colorpicker({});
+            $('.colorField').blur(function()
+            {
+
+                $(this).css('background-color',$(this).val());
+
+
+            });
+
+            //isChecked yes or no sur toutes les checkBox
+            $(".customCheckbox").click(function()
+            {
+                if($(this).attr('ischecked')==1)
+                {
+                    $(this).attr('ischecked',0);
+                }
+                else
+                {
+                    $(this).attr('ischecked',1);
+                }
+            });
+
+            var rtes=$(".rteField");
+            var editors=new Array();
+            for(var i=0;i<rtes.length;i++)
+            {
+
+
+                ClassicEditor
+                    .create( document.querySelector( "#"+$(rtes[i]).attr('id') ) )
+                    .then(editor=>{editors.push(editor);})
+            .catch( error => {
+                console.error( error );
+            } );
+            }
+
+            var uploadsDiv=$(".uploaderDiv");
+
+            var uploaderInstances={};
+            for(var i=0;i<uploadsDiv.length;i++)
+            {
+                var multipleVar=($(uploadsDiv[i]).attr('canBeMultiple')=="yes"?true:false);
+                var pathUploadPreview=($(uploadsDiv[i]).attr('isPicture')=="yes"?'{{ path('upload_img_for_preview') }}':'{{ path('upload_img_for_preview',{type:'file'}) }}');
+                uploaderInstances[$(uploadsDiv[i]).attr('id')] = new qq.FineUploader({
+                    element: document.getElementById($(uploadsDiv[i]).attr('id')),
+                    request:
+                        {
+                            endpoint: pathUploadPreview
+                        },
+                    deleteFile: {
+                        enabled: true, // defaults to false
+                        endpoint: '{{ path('delete_img_for_preview') }}'
+                    },
+
+                    session : {
+                        endpoint: '{{ path('existing_img_for_preview2') }}/'+$(uploadsDiv[i]).attr('id')+"/{{ iddp }}",
+                        refreshOnRequest:true
+                    },
+
+
+
+                    callbacks:
+                        {
+                            onComplete: function(id, filename, responseJSON)
+                            {
+                                /*if (responseJSON.success) {
+                                 var item = uploader._getItemByFileId(id);
+                                 var myElement = uploader._getElement(item, 'myCustomClass');
+                                 myElement.style.display = 'inline-block';
+                                 }*/
+                                //console.log(responseJSON);
+
+                            }
+                        },
+                    multiple:multipleVar
+
+                });
+            }
+
+            $(".btnSubmit").click(function()
+            {
+                var concernedCode=GV.getJsId("submit_",$(this).attr('id'));
+                if($(this).parent().parent().attr('fdTypeCode')=="gps")
+                {
+                    if($("#"+concernedCode).val()=="")
+                    {
+                        handleMap(concernedCode,true);
+                    }
+                    else
+                    {
+                        refreshMapData(concernedCode);
+                    }
+
+                }
+
+                var datasToSend={};
+
+                if(typeof(editors)!="undefined")
+                {
+                    for(var i=0;i<editors.length;i++)
+                    {
+                        if($(editors[i]['element']).attr('id')==concernedCode)
+                        {
+
+                            $("#"+$(editors[i]['element']).attr('id')).html(editors[i].getData());
+                        }
+
+                    }
+                }
+
+                for(var fUpload in uploaderInstances)
+                {
+                    if(fUpload==concernedCode)
+                    {
+                        datasToSend['value']=uploaderInstances[fUpload].getUploads();
+                    }
+
+                }
+
+
+
+                //visiblement c'est lui qui fait tout passer
+                if($("#"+concernedCode).hasClass('uploaderDiv')==false)
+                {
+                    datasToSend['value']=$("#"+concernedCode).val();
+                }
+
+
+                if($("#"+concernedCode).hasClass('customCheckbox'))
+                {
+
+                    datasToSend['value']=$("#"+concernedCode).attr('ischecked');
+                }
+
+                if($("#"+concernedCode).hasClass('datepicker'))
+                {
+                    if($("#"+concernedCode).val()!='')
+                    {
+                        datasToSend['value']=getTimeFromFormatedDate("dd/mm/yyyy","/",$("#"+concernedCode).val());
+                    }
+
+                }
+
+
+                //waiter
+                //GV.cssWaiter.show("#box-"+concernedCode,"bottom");
+                //console.log($(this).attr('id'));return "toto";
+                GV.cssWaiterSmall.show("#"+$(this).attr('id'));
+
+                $.ajax({
+                    type: 'POST',
+                    url: GV.urlPrefix+"backend/save-fd/"+concernedCode+"/"+idProj,
+                    data:datasToSend,
+                    success: function(retour)
+                    {
+                        $(".form-control").removeClass('is-invalid');
+
+                        if(retour.result=="ok")
+                        {
+                                    GV.cssWaiterSmall.hide();
+                                    GV.previousPage=false;
+                                    //$(".container-scroller").scrollTop(0);
+                                    new Noty({
+
+                                        text: retour.message,
+                                        timeout:4000,
+                                        type:"success"
+
+                                    }).show();
+
+                        }
+                        else
+                        {
+                            var messageRetour="<strong>"+retour.message+"</strong>";
+
+
+
+                            //GV.cssWaiter.showResult(messageRetour,"danger","bottom");
+                            GV.cssWaiterSmall.hide();
+                            new Noty({
+
+                                text: messageRetour,
+                                timeout:4000,
+                                type:"error"
+
+                            }).show();
+                        }
+
+
+                    },
+                    dataType: 'json'
+                });
+
+
+
+
+
+
+            });
+
+
+        };
+
+
+        function refreshMapData(idFd)
+        {
+            $("#"+idFd).val($("#gpsField_"+idFd).val()+"||"+$("#gpsArea_"+idFd).attr('mapValue'));
+        }
+        function handleMap(idFd,fromClick)
+        {
+
+            lastIdFd=idFd;
+            if(typeof(maps[idFd])=="undefined")
+            {
+                maps[idFd]={egm:new easyGmap("map"+idFd,"gpsArea_"+idFd)};
+            }
+            var tmpEgm=maps[idFd]['egm'];
+
+            if(fromClick)
+            {
+                tmpEgm.geocodeFromDatas("adresse",$("#gpsField_"+idFd).val(),function(datas)
+                {
+                    var theLat;
+                    var theLng;
+                    if(datas.result==false)
+                    {
+                        theLat=48.863611;
+                        theLng=2.348722;
+                    }
+                    else
+                    {
+                        theLat=datas.content[0]['geometry']['location'].lat();
+                        theLng=datas.content[0]['geometry']['location'].lng();
+                    }
+                    mapConfig(idFd,theLat,theLng,false);
+                });
+            }
+            else
+            {
+                var coors=$("#gpsArea_"+idFd).attr('mapValue');
+                if(coors.length>0)
+                {
+                    var arrayCoors=coors.split('_');
+                    mapConfig(idFd,arrayCoors[0],arrayCoors[1],true);
+                }
+            }
+
+        }
+
+        function markerHandling(map,marker)
+        {
+            map.removeMarkers();
+
+            map.addMarker(marker);
+        }
+
+        function mapConfig(idFd,lat,lng,setMarker)
+        {
+            //console.log("mapconfig");
+            var latLng={lat:lat,lng:lng};
+            var theMap=maps[idFd]['egm'];
+
+            theMap.init({
+                _latLng:latLng,
+                _zoomLevel: 9,
+                _realLatLng:false
+            });
+
+            $("#gpsArea_"+idFd).css('height',"200px");
+            theMap.addEventListener('click',chooseLocation,'chooseLocation');
+
+            if(setMarker)
+            {
+                var aMarker=new customMarker
+                (
+                    {
+                        _instanceName:"theMarker"+idFd,
+                        _latLng:{lat:lat,lng:lng},
+                        //_objectLatLng:datas.latLng,
+                        _title:"",
+                        _datas:null,
+                        _iconLink:null
+                    }
+                );
+                markerHandling(theMap,aMarker);
+
+            }
+            else
+            {
+                new Noty({
+
+                    text: "Cliquez sur la carte pour définir la localisation",
+                    timeout:4000,
+                    type:"warning"
+
+                }).show();
+            }
+
+        }
+
+
+
+        function chooseLocation(datas)
+        {
+            var tmpEgm=maps[lastIdFd]['egm'];
+            var lat=datas.latLng.lat();
+            var lng=datas.latLng.lng();
+
+            $("#"+lastIdFd).val($("#gpsField_"+lastIdFd).val()+"||"+lat+"_"+lng);
+            $("#gpsArea_"+lastIdFd).attr('mapValue',lat+"_"+lng);
+            var aMarker=new customMarker
+            (
+                {
+                    _instanceName:"theMarker"+lastIdFd,
+                    _latLng:{lat:lat,lng:lng},
+                    //_objectLatLng:datas.latLng,
+                    _title:"",
+                    _datas:null,
+                    _iconLink:null
+                }
+            );
+
+            markerHandling(tmpEgm,aMarker);
+        }
+    </script>
+
+{% endblock %}
+
+{% block content%}
+    {{ parent() }}
+    <div class="card">
+        <div class="card-body">
+            <div id="contFixedDatas" class="relative">
+            {% for theDatas in items.grouped %}
+                <br/><br/><h5 class="card-title mb-4">{{ theDatas.name }}</h5>
+                {% for item in theDatas.datas %}
+                    {% include 'AlectisLabAcmsBundle:Partials:fd-form.html.twig' with {'item': item } %}
+
+                {% endfor %}
+            {% endfor %}
+
+                <br/><br/><h5 class="card-title mb-4">Données diverses</h5>
+                {% for item in items.ungrouped %}
+                    {% include 'AlectisLabAcmsBundle:Partials:fd-form.html.twig' with {'item': item } %}
+                {% endfor %}
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,19 @@
+/********************MEDIA QUERIES******/
+@media screen and (max-width: 1000px) {
+    .widthStandard
+    {
+        width:100% !important;
+        overflow-x:hidden;
+    }
+    .onlyMobile
+    {
+        display:block;
+    }
+
+    .noMobile
+    {
+        display:none;
+    }
+
+
+}

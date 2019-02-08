@@ -1,0 +1,59 @@
+<div id="contFixedDatas" class="relative">
+                {% for item in items %}
+                    <div id="box-{{ item.fd_code }}" class="card-body cbSpecial ombre1 relative">
+
+                        <!--<h4 class="card-title font-weight-normal text-success">{{ item.fd_label }}</h4>-->
+<h6 class="card-subtitle mb-4">{{ item.fd_label }}
+    {% if item.fd_explication|length>0 %}
+        <span class="font-italic text-muted ">
+                                 ( {{ item.fd_explication }} )
+                            </span>
+    {% endif %}
+</h6>
+{% if item.fd_type_code=="text" or item.fd_type_code=="double_or_int" or item.fd_type_code=="email" or item.fd_type_code=="int" or item.fd_type_code=="date" or item.fd_type_code=="color" %}
+
+    {% if item.fd_maxlength<100 or item.fd_type_code=="email" or item.fd_type_code=="color"%}
+
+        <input type="text" {% if item.fd_type_code=="color" and item.fd_content|length>0 %} style="background-color:{{ item.fd_content }};" {% endif %} class="form-control {% if item.fd_type_code=="color" %} colorField {% endif %} {% if item.fd_type_code=="date" %} datepicker {% endif %}" id="{{ item.fd_code }}"  {% if item.fd_type_code=="date" %} value="{% if item.fd_content|length>0  %}{{ item.fd_content|date('d/m/Y') }} {% endif %}" {% else %} value="{{ item.fd_content }}" {% endif %} />
+        <div class="tar mt5">
+            <button type="button" id="submit_{{ item.fd_code }}" class="btn clickable btnSubmit btn-primary relative">Enregistrer</button>
+        </div>
+
+    {% else %}
+
+        <textarea class="form-control" id="{{ item.fd_code }}" rows="3">{{ item.fd_content|raw }}</textarea>
+        <div class="tar mt5">
+            <button type="button" id="submit_{{ item.fd_code }}" class="btn btnSubmit clickable btn-primary relative">Enregistrer</button>
+        </div>
+
+    {% endif %}
+
+{% endif %}
+
+                        {% if item.fd_type_code=="bool" %}
+                            <div >
+                                <input id="{{ item.fd_code }}" type="checkbox" {% if item.fd_content==1 %}ischecked="1" checked="checked"{% else %}ischecked="0"{% endif %} class=" customCheckbox">
+                            </div>
+                            <div class="tal mt5">
+                                <button type="button" id="submit_{{ item.fd_code }}" class="btn clickable btnSubmit btn-primary relative">Enregistrer</button>
+                            </div>
+
+                        {% endif %}
+                        {% if item.fd_type_code=="text_html" %}
+                            <textarea class="form-control rteField" id="{{ item.fd_code }}" rows="20">{{ item.fd_content|raw }}</textarea>
+                            <div class="tar mt5">
+                                <button type="button" id="submit_{{ item.fd_code }}" class="btn btnSubmit clickable btn-primary relative">Enregistrer</button>
+                            </div>
+                        {% endif %}
+
+                        {% if item.fd_type_code=="pictures" or item.fd_type_code=="picture"%}
+
+                            <div class="uploaderDiv" id="{{ item.fd_code }}" canBeMultiple="{% if item.fd_type_code=="picture" %}no{% else %}yes{% endif %}" ></div>
+                            <div class="tar mt5">
+                                <button type="button" id="submit_{{ item.fd_code }}" class="btn btnSubmit clickable btn-primary relative">Enregistrer</button>
+                            </div>
+
+                        {% endif %}
+</div>
+{% endfor %}
+</div>

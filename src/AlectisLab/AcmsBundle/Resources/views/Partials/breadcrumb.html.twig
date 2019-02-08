@@ -1,0 +1,15 @@
+
+<nav aria-label="breadcrumb">
+    <ol id="arianeFil" class="breadcrumb">
+
+        {% for br in breadcrumbs %}
+            <li class="breadcrumb-item"><a class="aBreadCrumb"  href="{% if br.url is defined %} {{ br.url }} {% endif %}">{{ br.name|capitalize }}</a></li>
+        {% endfor %}
+
+    </ol>
+</nav>
+
+<script type="text/javascript">
+    //$(document).ready
+
+</script>

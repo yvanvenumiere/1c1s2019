@@ -1,0 +1,34 @@
+{% extends 'AppBundle:Base:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block thecontent %}
+
+   
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+    <script type="text/javascript">
+
+        function init_accueil()
+        {
+
+            
+        }
+
+
+        GV.launchFunction=init_accueil;
+
+
+    </script>
+{% endblock %}

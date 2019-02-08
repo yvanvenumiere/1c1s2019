@@ -1,0 +1,1 @@
+<?php $datasManager=new websiteDatasManager(); $oneElement=new website(); ?>

@@ -1,0 +1,17 @@
+/stats
+/web/bundles/
+/app/bootstrap.php.cache
+/var/cache/*
+/stats/*
+/var/logs/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+/app/phpunit.xml
+/build/
+/vendor/
+/app/config/parameters.yml
+/error/
+/var/sessions/*
+/web/uh7lkjgypp/*
+/web/sdqsdsqsqdeer7776/*
+/web/crdi/*

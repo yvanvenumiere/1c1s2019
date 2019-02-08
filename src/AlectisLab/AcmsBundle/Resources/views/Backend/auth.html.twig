@@ -1,0 +1,101 @@
+{% extends 'AlectisLabAcmsBundle:Base:base_admin2.html.twig' %}
+
+{% block title %}Administration - Authentification{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        GV.launchFunction=function()
+        {
+            $("#authConnect").click(function(event)
+            {
+                event.preventDefault();
+                GV.cssWaiter.show("#contAuth");
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('service_auth') }}',
+                    data:{login:$("#inputEmail").val(),password:$("#inputPassword").val()},
+                    success: function(retour)
+                    {
+                        $(".form-control").removeClass('is-invalid');
+                        //GV.cssWaiter.hide()
+                        if(retour.result=="ok")
+                        {
+                            //GV.cssWaiter.showResult(retour.message,"success");
+                            document.location.href="{{ path('backend') }}";
+                        }
+                        else
+                        {
+                            GV.cssWaiter.showResult(retour.message,"danger");
+                            if(retour.errors)
+                            {
+
+                                for(var erreur in retour.errors)
+                                {
+                                    if(retour.errors[erreur]['isValid']==false)
+                                    {
+                                        $('#'+erreur).addClass("is-invalid");
+                                    }
+
+
+                                }
+                            }
+                        }
+
+
+                    },
+                    dataType: 'json'
+                });
+            });
+        };
+    </script>
+{% endblock %}
+
+
+
+{% block body %}
+    <!--<div class="relative" id="contAuth">
+
+        <form class="form-signin relative">
+            <h2 class="form-signin-heading">Connectez vous</h2>
+            <label for="inputEmail" class="sr-only">Login / Mail</label>
+            <input id="inputEmail" class="form-control" placeholder="Login / Mail" >
+            <label for="inputPassword" class="sr-only">Mot de passe</label>
+            <input id="inputPassword" class="form-control" placeholder="Mot de passe" type="password">
+            <br/>
+            <button id="authConnect" type="button" class="clickable btn btn-dark">Connexion</button>
+        </form>
+
+    </div>-->
+    <div class="container-scroller">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="content-wrapper full-page-wrapper d-flex align-items-center auth-pages">
+                    <div id="contAuth" class="card col-lg-4 mx-auto">
+                        <div class="card-body px-5 py-5">
+                            <h3 class="card-title text-left mb-3">Connexion</h3>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" id="inputEmail" class="form-control p_input" placeholder="Login">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="inputPassword" class="form-control p_input" placeholder="Mot de passe">
+                                </div>
+                                <!--<div class="form-group d-flex align-items-center justify-content-between">
+                                    <div class="form-check"><label><input type="checkbox" class="form-check-input">Remember me</label></div>
+                                    <a href="#" class="forgot-pass">Forgot password</a>
+                                </div>-->
+                                <div class="text-center">
+                                    <button id="authConnect" type="button" class="clickable btn btn-primary btn-block enter-btn">SE CONNECTER</button>
+                                </div>
+                                <!--<p class="Or-login-with my-3">Or login with</p>
+                                <a href="#" class="facebook-login btn btn-facebook btn-block">Sign in with Facebook</a>
+                                <a href="#" class="google-login btn btn-google btn-block">Sign in with Google+</a>
+                                <a href="#" class="google-login btn btn-create-account btn-block">Create An Account</a>-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+services:
+    alectis_lab_acms.global_datas:
+        class: AlectisLab\AcmsBundle\Services\GlobalDatas
+        arguments: ['@service_container']
+    app.datas_dispatcher:
+        class: AppBundle\Services\DatasDispatcher
+        arguments: ['@service_container']

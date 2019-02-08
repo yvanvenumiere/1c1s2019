@@ -1,0 +1,19 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 'localhost:8889'
+    database_port: null
+    database_name: csbuild
+    database_user: csbuild
+    database_password: csbuild
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+    id_dataproj: 1
+    tmp_upload_dir: uh7lkjgypp/
+    upload_dir: sdqsdsqsqdeer7776/indgstrdcvv76/
+    cbActionsPath: AppBundle/Helpers/CbActions.php
+    myhost: ''
+
+

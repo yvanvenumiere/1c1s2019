@@ -1,0 +1,309 @@
+<style type="text/css">
+    label{font-weight:bold;}
+</style>
+<form id="form{{ itemTypeId }}">
+    {% if modelLines|length>0 %}
+        {% for model in modelLines %}
+            {% if model.ml_type_code=="text" or model.ml_type_code=="double_or_int" or model.ml_type_code=="email" or model.ml_type_code=="int" or model.ml_type_code=="date" or model.ml_type_code=="color" %}
+                {% if model.ml_maxlength<100 or model.ml_type_code=="email" or model.ml_type_code=="color"%}
+                    <div class="form-group">
+                        <label>{{ model.ml_name }} : </label>
+                        <p {% if model.ml_type_code=="color" and item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]|length>0 %} style="background-color:{{ item.fieldValues[model.ml_code] }};" {% endif %}>{% if model.ml_type_code=="date" %} {{ item.fieldValues[model.ml_code]|date('d/m/Y') }}" {% else %} {{ item.fieldValues[model.ml_code] }} {% endif %}</p>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label>{{ model.ml_name }} : </label>
+                        <p>{{ item.fieldValues[model.ml_code]|raw }}</p>
+
+                    </div>
+                {% endif %}
+
+            {% endif %}
+            {% if model.ml_type_code=="bool" %}
+                <div >
+                    <label>{{ model.ml_name }} : </label>
+                        <p> {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]==1%} oui {% else %} non {% endif %} </p>
+
+
+
+                </div>
+
+            {% endif %}
+            {% if model.ml_type_code=="text_html" %}
+                <div class="form-group">
+                    <label>{{ model.ml_name }} : </label>
+                    <p>{{ item.fieldValues[model.ml_code]|raw }}</p>
+                </div>
+
+            {% endif %}
+            {% if model.ml_type_code=="pictures" or model.ml_type_code=="picture"%}
+                <div class="form-group">
+                    <label>{{ model.ml_name }} : </label>
+                    {% set pics = item.fieldValues[model.ml_code]|split(',') %}
+                    {% for pic in pics %}
+
+                        {% if pic|length>0 %}
+                            <img src="{% if app.environment=="dev" %}/app_dev.php/{% else %}/{% endif %}al_getimage/{{ pic|trim }}/resizeHomoH/100"/>
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+            {% if model.ml_type_code=="fk" %}
+                <div class="form-group">
+                    <label>{{ model.ml_name }} :</label>
+
+                        {% if model.possibleValues is defined %}
+
+                            {% for value in model.possibleValues %}
+                                {% if item is defined and item.fieldValues[model.ml_code] is defined and item.fieldValues[model.ml_code]==value.iditem %}
+                                    {{ value.fields[model.fk_col] }}
+
+                                {% endif %}
+
+
+                            {% endfor %}
+                        {% endif %}
+
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+
+    {% else %}
+        <p>Aucun champs à enregistrer défini</p>
+    {% endif %}
+
+</form>
+
+<script type="text/javascript">
+
+    //initialisation du date picker sur tous les dates picker
+    $('.datepicker').pickadate
+    ({
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+        weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'jeu', 'ven', 'Sam'],
+        today: "Aujourd'hui",
+        clear: 'Effacer',
+        close: 'Fermer',
+
+        // Accessibility labels
+        labelMonthNext: 'Mois suivant',
+        labelMonthPrev: 'Mois précédent',
+        labelMonthSelect: 'Sélectionner un mois',
+        labelYearSelect: 'Sélectionner une année',
+
+        // Formats
+        format: 'dd/mm/yyyy',
+    });
+
+    $('.colorField').colorpicker({});
+    $('.colorField').blur(function()
+    {
+
+        $(this).css('background-color',$(this).val());
+
+
+    });
+
+    //isChecked yes or no sur toutes les checkBox
+    $(".customCheckbox").unbind('click');
+    $(".customCheckbox").click(function()
+    {
+        if($(this).attr('ischecked')==1)
+        {
+            $(this).attr('ischecked',0);
+        }
+        else
+        {
+            $(this).attr('ischecked',1);
+        }
+    });
+
+    //évènement sur le bouton de soumission du formulaire
+    $('#submit{{ itemTypeId }}').unbind('click');
+    $('#submit{{ itemTypeId }}').click(function()
+    {
+        if(typeof(editors)!="undefined")
+        {
+            for(var i=0;i<editors.length;i++)
+            {
+                $("#"+$(editors[i]['element']).attr('id')).html(editors[i].getData());
+            }
+        }
+
+        var datasToSend={};
+        {% for model in modelLines %}
+        datasToSend['{{ model.ml_code }}']=$("#{{ model.ml_code }}").val();
+
+        {% endfor %}
+
+        //données de checkboxes
+        var theCheckBoxes=$('.customCheckbox');
+        for(var i=0;i<theCheckBoxes.length;i++)
+        {
+            datasToSend[$(theCheckBoxes[i]).attr('id')]=$(theCheckBoxes[i]).attr('ischecked');
+        }
+
+        //données de date
+        var theDates=$('.datepicker');
+        for(var i=0;i<theDates.length;i++)
+        {
+            if($(theDates[i]).val()!='')
+            {
+                datasToSend[$(theDates[i]).attr('id')]=getTimeFromFormatedDate("dd/mm/yyyy","/",$(theDates[i]).val());
+            }
+
+        }
+
+
+        for(var fUpload in uploaderInstances)
+        {
+            datasToSend[fUpload]=uploaderInstances[fUpload].getUploads();
+            //console.log(uploaderInstances[fUpload].getUploads());
+        }
+
+
+        //paramètre d'itemId selon contexte
+        {% if item==0 %}
+        {% set itemIdParam = 0  %}
+        {% else %}
+        {% set itemIdParam = item.entity.iditem  %}
+        {% endif %}
+
+        //waiter
+        GV.cssWaiter.show("#form{{ itemTypeId }}","bottom");
+        $.ajax({
+            type: 'POST',
+            url: '{{ path('save_item',{itemTypeId:itemTypeId,itemId:itemIdParam}) }}',
+            data:datasToSend,
+            success: function(retour)
+            {
+                $(".form-control").removeClass('is-invalid');
+
+                if(retour.result=="ok")
+                {
+                    if(GV.previousPage!=false)
+                    {
+                        //GV.cssWaiter.hide()
+                        $("#contCrud").load(GV.previousPage,function()
+                        {
+
+                            GV.cssWaiter.hide();
+                            GV.previousPage=false;
+                            $(".container-scroller").scrollTop(0);
+                            new Noty({
+
+                                text: retour.message,
+                                timeout:4000,
+                                type:"success"
+
+                            }).show();
+
+
+                        });
+
+                    }
+                }
+                else
+                {
+                    var messageRetour="<strong>"+retour.message+"</strong>";
+
+
+                    if(retour.errors)
+                    {
+                        for(var erreur in retour.errors)
+                        {
+                            $('#'+erreur).addClass("is-invalid");
+                            messageRetour+="<br/>"+retour.errors[erreur];
+                        }
+                    }
+                    //GV.cssWaiter.showResult(messageRetour,"danger","bottom");
+                    GV.cssWaiter.hide();
+                    new Noty({
+
+                        text: messageRetour,
+                        timeout:4000,
+                        type:"error"
+
+                    }).show();
+                }
+
+
+            },
+            dataType: 'json'
+        });
+
+    });
+
+    var rtes=$(".rteField");
+    var editors=new Array();
+    for(var i=0;i<rtes.length;i++)
+    {
+
+        ClassicEditor
+            .create( document.querySelector( "#"+$(rtes[i]).attr('id') ) )
+            .then(editor=>{editors.push(editor);})
+    .catch( error => {
+        console.error( error );
+    } );
+    }
+
+    var uploadsDiv=$(".uploaderDiv");
+
+    var uploaderInstances={};
+    for(var i=0;i<uploadsDiv.length;i++)
+    {
+        var multipleVar=($(uploadsDiv[i]).attr('canBeMultiple')=="yes"?true:false);
+        //console.log($(uploadsDiv[i]).attr('canBeMultiple'));
+        uploaderInstances[$(uploadsDiv[i]).attr('id')] = new qq.FineUploader({
+            element: document.getElementById($(uploadsDiv[i]).attr('id')),
+            request:
+                {
+                    endpoint: '{{ path('upload_img_for_preview') }}'
+                },
+            deleteFile: {
+                enabled: true, // defaults to false
+                endpoint: '{{ path('delete_img_for_preview') }}'
+            },
+            {% if item is defined and item!=0 %}
+            session : {
+                endpoint: '{{ path('existing_img_for_preview') }}/'+$(uploadsDiv[i]).attr('id')+"/{{ item.entity.iditem }}",
+                refreshOnRequest:true
+            },
+            {% endif %}
+
+
+            callbacks:
+                {
+                    onComplete: function(id, filename, responseJSON)
+                    {
+                        /*if (responseJSON.success) {
+                         var item = uploader._getItemByFileId(id);
+                         var myElement = uploader._getElement(item, 'myCustomClass');
+                         myElement.style.display = 'inline-block';
+                         }*/
+                        //console.log(responseJSON);
+
+                    }
+                },
+            multiple:multipleVar
+
+        });
+    }
+
+    //console.log(uploaderInstances);
+
+
+
+
+
+
+</script>

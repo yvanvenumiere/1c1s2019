@@ -1,0 +1,1 @@
+<?php $datasManager=new paiementsDatasManager(); $oneElement=new paiements(); ?>

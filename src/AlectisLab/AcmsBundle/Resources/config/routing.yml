@@ -1,0 +1,3 @@
+alectis_lab_acms_homepage:
+    path:     /
+    defaults: { _controller: AlectisLabAcmsBundle:Default:index }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets
+        'assets/alectislab/acms/node_modules/font-awesome/css/font-awesome.min.css'
+        'assets/alectislab/acms/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css'
+        'assets/alectislab/acms/node_modules/flag-icon-css/css/flag-icon.min.css'
+        'assets/alectislab/acms/css/style.css'
+        'assets/alectislab/acms/noty/noty.css'
+        'assets/alectislab/acms/css/main.css'
+        'assets/alectislab/acms/datepicker/themes/default.css'
+        'assets/alectislab/acms/datepicker/themes/default.date.css'
+        'assets/alectislab/acms/datepicker/themes/default.time.css'
+        'assets/alectislab/acms/fineuploader/fine-uploader-gallery.css'
+        'assets/alectislab/acms/tooltipster/css/tooltipster.bundle.css'
+        'assets/alectislab/acms/boot-color/style.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    {% block headsup %}
+
+    {% endblock %}
+
+    <!--<link rel="shortcut icon" href="images/favicon.png" />-->
+</head>
+
+<body>
+{% block body %}{% endblock %}
+
+
+
+{% block javascripts %}
+    {% javascripts
+
+    'assets/alectislab/acms/node_modules/jquery/dist/jquery.min.js'
+    'assets/alectislab/acms/node_modules/popper.js/dist/umd/popper.min.js'
+    'assets/alectislab/acms/node_modules/bootstrap/dist/js/bootstrap.min.js'
+    'assets/alectislab/acms/node_modules/chart.js/dist/Chart.min.js'
+    'assets/alectislab/acms/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js'
+    'assets/alectislab/acms/js/off-canvas.js'
+    'assets/alectislab/acms/js/cssWaiter.js'
+    'assets/alectislab/acms/noty/noty.js'
+    'assets/alectislab/acms/js/logic.js'
+    'assets/alectislab/acms/js/ckeditor2.js'
+    'assets/alectislab/acms/js/helpers.js'
+    'assets/alectislab/acms/fineuploader/all.fine-uploader.core.js'
+    'assets/alectislab/acms/fineuploader/all.fine-uploader.js'
+    'assets/alectislab/acms/js/hoverable-collapse.js'
+    'assets/alectislab/acms/js/bootbox.min.js'
+    'assets/alectislab/acms/tooltipster/js/tooltipster.bundle.js'
+    'assets/alectislab/acms/js/misc.js'
+    'assets/alectislab/acms/js/chart.js'
+    'assets/alectislab/acms/js/maps.js'
+    'assets/alectislab/acms/datepicker/picker.js'
+    'assets/alectislab/acms/datepicker/legacy.js'
+    'assets/alectislab/acms/datepicker/picker.date.js'
+    'assets/alectislab/acms/boot-color/js.js'
+    'assets/alectislab/acms/datepicker/picker.time.js'
+    'assets/alectislab/acms/egm/globalHelper.js'
+    'assets/alectislab/acms/egm/EASY_GMAP_UTILS.js'
+    'assets/alectislab/acms/egm/customMarker.js'
+    'assets/alectislab/acms/egm/easyGmap.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key={{ globalDatas.gmapKey }}">
+    </script>
+
+    <script type="text/javascript">
+        {% if app.environment=="dev" %}
+        GV.urlPrefix="/app_dev.php/";
+        GV.mode="dev";
+        {% else %}
+        GV.urlPrefix="/";
+        GV.mode="prod";
+        {% endif %}
+    </script>
+{% endblock %}
+</body>
+
+</html>

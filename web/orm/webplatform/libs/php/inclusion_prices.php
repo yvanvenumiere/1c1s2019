@@ -1,0 +1,1 @@
+<?php $datasManager=new pricesDatasManager(); $oneElement=new prices(); ?>

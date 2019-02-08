@@ -1,0 +1,1 @@
+<?php $datasManager=new change_password_linkDatasManager(); $oneElement=new change_password_link(); ?>

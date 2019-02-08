@@ -1,0 +1,1 @@
+<?php $datasManager=new tags_templatesDatasManager(); $oneElement=new tags_templates(); ?>

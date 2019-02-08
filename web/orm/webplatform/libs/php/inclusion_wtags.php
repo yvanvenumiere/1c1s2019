@@ -1,0 +1,1 @@
+<?php $datasManager=new wtagsDatasManager(); $oneElement=new wtags(); ?>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formDescription reqLimit="10" formOrder="">
+     <idusers isGridVisible="true" dataType="int(11)" isVisibleInForm="false" isPrimaryKey="true" isFilterVisible="false">
+          <!--label displayed in the form-->
+          <label>idusers</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </idusers>
+     <user_mail isGridVisible="true" dataType="varchar(100)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_mail</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_mail>
+     <user_mdp isGridVisible="true" dataType="varchar(32)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_mdp</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_mdp>
+     <user_date_creation isGridVisible="true" dataType="bigint(15)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_date_creation</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_date_creation>
+     <profiles_idprofil isGridVisible="true" dataType="int(11)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>profiles_idprofil</label>
+          <!--in case of forein key , we can specify the column we choose to display datas ..??-->
+          <displayColumn sortColumn=""></displayColumn>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </profiles_idprofil>
+     <user_nom isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_nom</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_nom>
+     <user_prenom isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_prenom</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_prenom>
+     <user_phone isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_phone</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_phone>
+     <user_unique_tmp_id isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+          <!--label displayed in the form-->
+          <label>user_unique_tmp_id</label>
+          <!--type of checking for the field : simple,mail,optional,int-->
+          <cheking></cheking>
+          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <pictureField enabled="false" enabledForRelation="false">
+               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
+               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
+                    <acceptedFormats>
+                         <!--each child node represents a format of picture-->
+                         <format>.jpg</format>
+                    </acceptedFormats>
+               </picture>
+          </pictureField>
+          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
+          <fileField enabled="false">
+               <!--configuration for the upload-->
+               <aFile path="path for the file">
+                    <!--each child node represents an accepted format-->
+                    <acceptedFormats>
+                         <format>.extension</format>
+                    </acceptedFormats>
+               </aFile>
+          </fileField>
+          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
+          <dateField enabled="false"/>
+          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
+          <booleanField enabled="false">
+               <boolean_true_label>oui</boolean_true_label>
+               <boolean_false_label>non</boolean_false_label>
+          </booleanField>
+          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
+          <richTextEditorField enabled="false"/>
+          <!--if you want to make a colorpicker field-->
+          <colorPickerField enabled="false"/>
+     </user_unique_tmp_id>
+     <!--this node contains all the callbacks for the differents action on this model -->
+     <callbacks>
+          <!--action that is executed when an element is saved-->
+          <onSave fileName="" className="" methodName=""/>
+          <onDelete fileName="" className="" methodName=""/>
+          <onUpdate fileName="" className="" methodName=""/>
+     </callbacks>
+</formDescription>

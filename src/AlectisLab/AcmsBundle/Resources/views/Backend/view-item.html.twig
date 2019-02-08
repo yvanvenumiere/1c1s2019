@@ -1,0 +1,26 @@
+<br/><h5> {{ itemTypeInfo.it_name }}</h5>
+<br/>
+<div class="absolute iconIonic topRight ion-chevron-left previousPage" data-pack="default" data-tags="arrow, left">
+    <button type="button" class="btn clickable btn-primary">Retour</button>
+</div>
+{% include 'AlectisLabAcmsBundle:Partials:item-infos.html.twig' with {'modelLines': modelLines,item:item} %}
+<script type="text/javascript">
+    $(".previousPage").unbind('click');
+    $(".previousPage").click(function()
+    {
+        if(GV.previousPage!=false)
+        {
+            GV.cssWaiter.show("#contCrud","top");
+            $("#contCrud").load(GV.previousPage,function()
+            {
+                GV.cssWaiter.hide();
+                GV.previousPage=false;
+
+            });
+        }
+    });
+
+</script>
+
+
+

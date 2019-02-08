@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets
+            'assets/alectislab/acms/bootstrap-4/css/bootstrap.css'
+            'assets/alectislab/acms/bootstrap-4/css/bootstrap-grid.css'
+            'assets/alectislab/acms/bootstrap-4/css/bootstrap-reboot.css'
+            'assets/alectislab/acms/datepicker/themes/default.css'
+            'assets/alectislab/acms/datepicker/themes/default.date.css'
+            'assets/alectislab/acms/datepicker/themes/default.time.css'
+            filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    {% block headsup %}
+
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    {% javascripts
+        'assets/alectislab/acms/js/jquery.js'
+        'assets/alectislab/acms/js/poppers.js'
+        'assets/alectislab/acms/js/cssWaiter.js'
+    'assets/alectislab/acms/datepicker/picker.js'
+        'assets/alectislab/acms/datepicker/legacy.js'
+        'assets/alectislab/acms/datepicker/picker.date.js'
+        'assets/alectislab/acms/datepicker/picker.time.js'
+        'assets/alectislab/acms/bootstrap-4/js/bootstrap.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

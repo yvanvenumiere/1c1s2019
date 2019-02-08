@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hierarchy>
+     <cat_prices refName="cat_prices" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="options_cat" usedCol="idcat_prices" fk="cat_prices_idcat_prices" enabled="false" prompt="" icon=""/><childTable className="prices" usedCol="idcat_prices" fk="cat_prices_idcat_prices" enabled="false" prompt="" icon=""/></childTables></cat_prices>
+     <change_password_link refName="change_password_link" displayColumn="">
+          <parentTables>
+               <parentTable className="users" fk="users_idusers" usedCol="idusers" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </change_password_link>
+     <data_stack refName="data_stack" displayColumn="">
+          <parentTables/>
+     </data_stack>
+     <db_instance refName="db_instance" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="website" usedCol="iddb_instance" fk="db_instance_iddb_instance" enabled="false" prompt="" icon=""/></childTables></db_instance>
+     <echeanciers refName="echeanciers" displayColumn="">
+          <parentTables>
+               <parentTable className="paiements" fk="paiements_idpaiements" usedCol="idpaiements" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </echeanciers>
+     <features refName="features" displayColumn="">
+          <parentTables>
+               <parentTable className="w_templates" fk="w_templates_idw_templates" usedCol="idw_templates" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </features>
+     <media_template refName="media_template" displayColumn="">
+          <parentTables>
+               <parentTable className="medias" fk="medias_idmedias" usedCol="idmedias" enabled="false" prompt="" icon=""/>
+               <parentTable className="w_templates" fk="w_templates_idw_templates" usedCol="idw_templates" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </media_template>
+     <medias refName="medias" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="media_template" usedCol="idmedias" fk="medias_idmedias" enabled="false" prompt="" icon=""/></childTables></medias>
+     <options refName="options" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="options_cat" usedCol="idoptions" fk="options_idoptions" enabled="false" prompt="" icon=""/></childTables></options>
+     <options_cat refName="options_cat" displayColumn="">
+          <parentTables>
+               <parentTable className="cat_prices" fk="cat_prices_idcat_prices" usedCol="idcat_prices" enabled="false" prompt="" icon=""/>
+               <parentTable className="options" fk="options_idoptions" usedCol="idoptions" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </options_cat>
+     <paiements refName="paiements" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="echeanciers" usedCol="idpaiements" fk="paiements_idpaiements" enabled="false" prompt="" icon=""/><childTable className="website_paiement" usedCol="idpaiements" fk="paiements_idpaiements" enabled="false" prompt="" icon=""/></childTables></paiements>
+     <prices refName="prices" displayColumn="">
+          <parentTables>
+               <parentTable className="cat_prices" fk="cat_prices_idcat_prices" usedCol="idcat_prices" enabled="false" prompt="" icon=""/>
+               <parentTable className="w_templates" fk="w_templates_idw_templates" usedCol="idw_templates" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </prices>
+     <profiles refName="profiles" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="users" usedCol="idprofil" fk="profiles_idprofil" enabled="false" prompt="" icon=""/></childTables></profiles>
+     <tags_templates refName="tags_templates" displayColumn="">
+          <parentTables>
+               <parentTable className="w_templates" fk="w_templates_idw_templates" usedCol="idw_templates" enabled="false" prompt="" icon=""/>
+               <parentTable className="wtags" fk="wtags_idwtags" usedCol="idwtags" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </tags_templates>
+     <users refName="users" displayColumn="">
+          <parentTables>
+               <parentTable className="profiles" fk="profiles_idprofil" usedCol="idprofil" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     <childTables><childTable className="change_password_link" usedCol="idusers" fk="users_idusers" enabled="false" prompt="" icon=""/><childTable className="website" usedCol="idusers" fk="users_idusers" enabled="false" prompt="" icon=""/></childTables></users>
+     <w_templates refName="w_templates" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="features" usedCol="idw_templates" fk="w_templates_idw_templates" enabled="false" prompt="" icon=""/><childTable className="media_template" usedCol="idw_templates" fk="w_templates_idw_templates" enabled="false" prompt="" icon=""/><childTable className="prices" usedCol="idw_templates" fk="w_templates_idw_templates" enabled="false" prompt="" icon=""/><childTable className="tags_templates" usedCol="idw_templates" fk="w_templates_idw_templates" enabled="false" prompt="" icon=""/><childTable className="website" usedCol="idw_templates" fk="w_templates_idw_templates" enabled="false" prompt="" icon=""/></childTables></w_templates>
+     <website refName="website" displayColumn="">
+          <parentTables>
+               <parentTable className="db_instance" fk="db_instance_iddb_instance" usedCol="iddb_instance" enabled="false" prompt="" icon=""/>
+               <parentTable className="users" fk="users_idusers" usedCol="idusers" enabled="false" prompt="" icon=""/>
+               <parentTable className="w_templates" fk="w_templates_idw_templates" usedCol="idw_templates" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     <childTables><childTable className="website_paiement" usedCol="idwebsite" fk="website_idwebsite" enabled="false" prompt="" icon=""/></childTables></website>
+     <website_paiement refName="website_paiement" displayColumn="">
+          <parentTables>
+               <parentTable className="paiements" fk="paiements_idpaiements" usedCol="idpaiements" enabled="false" prompt="" icon=""/>
+               <parentTable className="website" fk="website_idwebsite" usedCol="idwebsite" enabled="false" prompt="" icon=""/>
+          </parentTables>
+     </website_paiement>
+     <wtags refName="wtags" displayColumn="">
+          <parentTables/>
+     <childTables><childTable className="tags_templates" usedCol="idwtags" fk="wtags_idwtags" enabled="false" prompt="" icon=""/></childTables></wtags>
+</hierarchy>

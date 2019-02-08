@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<global_config>
+     <generic>
+          <global_date_format>dd-mm-yy</global_date_format>
+          <global_add_label>Ajouter un élément</global_add_label>
+          <global_filter_label>Filtres</global_filter_label>
+          <global_search_label>Rechercher</global_search_label>
+          <global_delete_confirm_label>Etes vous sur de vouloir effacer cet élément ?</global_delete_confirm_label>
+          <global_delete_label>effacer</global_delete_label>
+          <global_edit_label>éditer</global_edit_label>
+          <global_edit_title_label>Modifier l'élement</global_edit_title_label>
+          <global_add_title_label>Informations sur l'élement</global_add_title_label>
+          <global_save_label>Sauvegarder l'élément</global_save_label>
+          <global_cancel_label>Annuler</global_cancel_label>
+          <global_error_image_label>L'image n'a pu être récupéré</global_error_image_label>
+          <global_error_file_label>Le fichier n'a pu être récupéré</global_error_file_label>
+          <global_error_fields_label>Vérifiez d'avoir bien rempli les champs surlignés en rouge</global_error_fields_label>
+          <global_login>login</global_login>
+          <global_password>password</global_password>
+          <global_login_label>Identifiant</global_login_label>
+          <global_password_label>Mot de passe</global_password_label>
+          <global_wrong_login>login incorrect</global_wrong_login>
+          <global_disconnect>Se déconnecter</global_disconnect>
+          <global_connect>Se connecter</global_connect>
+     </generic>
+</global_config>

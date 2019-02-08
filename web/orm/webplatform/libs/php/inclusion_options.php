@@ -1,0 +1,1 @@
+<?php $datasManager=new optionsDatasManager(); $oneElement=new options(); ?>
