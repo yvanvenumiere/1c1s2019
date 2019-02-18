@@ -131,7 +131,7 @@ img {
   padding-bottom: 100px; }
 
 .section-padding-100-0 {
-  padding-top: 131px;
+  padding-top: 100px;
   padding-bottom: 0; }
 
 .section-padding-0-100 {
@@ -144,7 +144,7 @@ img {
 
 /* :: 3.4.0 Preloader */
 .preloader {
-  background-color: #9e0070;
+  background-color: #688bfe;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -414,8 +414,6 @@ img {
   position: absolute;
   z-index: 1000;
   width: 100%;
-  background-color:#FFFFFF;
-  box-shadow: 0 7px 40px 0 rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
   right: 0; }
@@ -451,7 +449,7 @@ img {
         text-transform: capitalize;
         font-size: 18px;
         padding: 0 10px;
-        color: #000000; }
+        color: #ffffff; }
         .header-area .pixel-main-menu .classy-navbar .classynav ul li a:hover, .header-area .pixel-main-menu .classy-navbar .classynav ul li a:focus {
           color: #ff7902; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -543,7 +541,7 @@ img {
         border-color: #ff7902;
         color: #ff7902; }
   .header-area .is-sticky .pixel-main-menu {
-    background-color: #FFFFFF;
+    background-color: #688bfe;
     box-shadow: 0 7px 40px 0 rgba(0, 0, 0, 0.3); }
 
 .classy-navbar-toggler .navbarToggler span {
@@ -1017,7 +1015,7 @@ img {
 .footer-area {
   position: relative;
   z-index: 1;
-  background-color: #9e0070;
+  background-color: #688bfe;
   padding-left: 35px;
   padding-right: 35px; }
   @media only screen and (max-width: 767px) {

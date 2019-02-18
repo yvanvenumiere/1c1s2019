@@ -16,6 +16,7 @@
         {% stylesheets
         
         'assets/css/main.css'
+        'pixeltemplate/css/bootstrap.min.css'
         'pixeltemplate/style.css'
         
         filter='cssrewrite' %}
@@ -49,7 +50,7 @@
                 <nav class="classy-navbar justify-content-between" id="pixelNav">
 
                     <!-- Nav brand -->
-                    <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="index.html" class="nav-brand"><img src="/assets/layout/totoclic.png" width="120" height="auto" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -67,8 +68,8 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="index.html">Accueil</a></li>
+                                <!--<li><a href="about.html">About</a></li>
                                 <li><a href="services.html">Services</a></li>
                                 <li><a href="portfolio.html">Pages</a>
                                     <ul class="dropdown">
@@ -133,19 +134,19 @@
                                             <li><a href="elements.html">Elements</a></li>
                                         </ul>
                                     </div>
-                                </li>
+                                </li>-->
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
 
                             <!-- Top Social Info -->
-                            <div class="top-social-info ml-5">
+                            <!--<div class="top-social-info ml-5">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-dribbble"></i></a>
                                 <a href="#"><i class="fa fa-flickr"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
+                            </div>-->
                         </div>
                         <!-- Nav End -->
                     </div>
@@ -159,21 +160,17 @@
 
 <!-- ##### Footer Area Start ##### -->
 <footer class="footer-area section-padding-100-0">
-    <div class="container-fluid">
+    <!--<div class="container-fluid">
         <div class="row justify-content-between">
 
-            <!-- Single Footer Widget -->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="single-footer-widget mb-100">
-                    <!-- Footer Logo -->
-                    <a href="index.html" class="footer-logo"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="index.html" class="footer-logo"><img src="pixeltemplate/img/core-img/logo.png" alt=""></a>
                 </div>
             </div>
 
-            <!-- Single Footer Widget -->
             <div class="col-12 col-md-9 col-lg-8 col-xl-7">
                 <div class="row">
-                    <!-- Single Footer Widget -->
                     <div class="col-sm-4">
                         <div class="single-footer-widget mb-100">
                             <h5 class="widget-title">Address</h5>
@@ -181,7 +178,6 @@
                         </div>
                     </div>
 
-                    <!-- Single Footer Widget -->
                     <div class="col-sm-4">
                         <div class="single-footer-widget mb-100">
                             <h5 class="widget-title">Support</h5>
@@ -189,7 +185,6 @@
                         </div>
                     </div>
 
-                    <!-- Single Footer Widget -->
                     <div class="col-sm-4">
                         <div class="single-footer-widget mb-100">
                             <h5 class="widget-title">Social</h5>
@@ -206,7 +201,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- Copywrite Area -->
     <div class="copywrite-area">
@@ -216,7 +211,7 @@
                     <div class="copywrite-content">
                         <!-- Copywrite Text -->
                         <p class="copywrite-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script>  | <a href="https://alectis-lab.com" target="_blank">Alectis-Lab</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
@@ -224,11 +219,10 @@
                 <div class="col-12 col-md-6">
                     <nav class="footer-nav">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Portfolio</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#">C.G.V</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+
                         </ul>
                     </nav>
                 </div>
@@ -239,20 +233,13 @@
 <!-- ##### Footer Area Start ##### -->
 
 
-<!-- Popper js -->
-<script src="js/bootstrap/popper.min.js"></script>
-<!-- Bootstrap js -->
-<script src="js/bootstrap/bootstrap.min.js"></script>
-<!-- All Plugins js -->
-<script src="js/plugins/plugins.js"></script>
-<!-- Active js -->
-<script src="js/active.js"></script>
 {% block javascripts %}
     <script type="text/javascript">
     </script>
     {% javascripts
     'pixeltemplate/js/jquery/jquery-2.2.4.min.js'
     'pixeltemplate/js/bootstrap/popper.min.js'
+    'pixeltemplate/js/bootstrap/bootstrap.min.js'
     'pixeltemplate/js/plugins/plugins.js'
     'pixeltemplate/js/active.js'
     'js/logic.js'

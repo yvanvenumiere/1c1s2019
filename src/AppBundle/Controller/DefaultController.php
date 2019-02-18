@@ -20,10 +20,21 @@ class DefaultController extends AlectisBaseController
     public function indexAction(Request $request)
     {
 
+        $infosCat=CustomQueries::getDataTemplates($this->ormManager);
+        //echo "<pre>";var_dump($infosCat);exit;
+        return $this->render('AppBundle:Default:accueil.html.twig',array('infosCats'=>$infosCat));
 
-        return $this->render('AppBundle:Default:accueil.html.twig',array());
 
+    }
 
+    /**
+     * @Route("/produit/{ref}/{id}", name="produit")
+     */
+    public function produitAction($ref,$id)
+    {
+        $produit=CustomQueries::getProduit($this->ormManager,$id);
+
+        return $this->render('AppBundle:Default:produit.html.twig',array('infos'=>$produit));
     }
 
 

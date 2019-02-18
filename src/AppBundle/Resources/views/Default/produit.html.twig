@@ -1,0 +1,115 @@
+{% extends 'AppBundle:Base:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    'assets/css/produit.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block thecontent %}
+
+    <!--<section class="hero-area">
+        <div class="hero-slideshow owl-carousel">
+
+            {% for media in infos.medias %}
+                <div class="single-slide">
+
+                    <div class="slide-bg-img bg-img" style="background-image: url({{ path('al_get_image',{name:media.media_name,resizetype:'resizeHomoW',format:'1200'}) }});"></div>
+
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12 col-lg-9">
+                                <div class="welcome-text">
+                                    <h2 data-animation="fadeInUp" data-delay="300ms"></h2>
+                                    <h4 data-animation="fadeInUp" data-delay="500ms"></h4>
+                                    <a href="#" class="btn pixel-btn mt-50" data-animation="fadeInUp" data-delay="700ms"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+
+    </section>-->
+<section class="section-padding-100-0 container">
+    <div class="row">
+        <!-- Feature Thumbnail -->
+        <div class="col-lg-6 col-md-6 col-xs-6">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for key,media in infos.medias %}
+                        <div class="carousel-item tac{% if key==0 %} active {% endif %}">
+                            <img src="{{ path('al_get_image',{name:media.media_name,resizetype:'resizeHomoH',format:'400'}) }}"/>
+                        </div>
+                        <li data-target="#carouselExampleControls" data-slide-to="{{ key }}" {% if key==0 %} class="active" {% endif %}></li>
+
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    <!--<div class="carousel-item active">
+
+                    </div>
+                    <div class="carousel-item">
+
+                    </div>
+                    <div class="carousel-item">
+
+                    </div>-->
+                    {% for key,media in infos.medias %}
+                        <div class="carousel-item tac{% if key==0 %} active {% endif %}">
+                            <img src="{{ path('al_get_image',{name:media.media_name,resizetype:'resizeHomoH',format:'400'}) }}"/>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-xs-6">
+        <div class="feature-content">
+            <h1>{{ infos.wt_name }}</h1>
+            <p>{{ infos.wt_description }}</p>
+
+        </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+    <script type="text/javascript">
+
+        function init_accueil()
+        {
+
+
+        }
+
+
+        GV.launchFunction=init_accueil;
+
+
+    </script>
+{% endblock %}
+

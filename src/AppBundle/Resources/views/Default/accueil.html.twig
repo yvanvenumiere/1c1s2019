@@ -9,7 +9,63 @@
 {% endblock %}
 
 {% block thecontent %}
+    <section class="team-member-area section-padding-100-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Section Heading -->
+                    <div class="section-heading text-center">
+                        <h2>Créer votre site un 1 clic</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum quis sem sed pharetra. Morbi tempus lobortis nunc non commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    </section>
+
+    <!-- ##### Portfolio Area Start ###### -->
+    <div class="pixel-portfolio-area section-padding-100">
+        <!-- Portfolio Menu -->
+        <div class="pixel-projects-menu">
+            <div class="text-center portfolio-menu">
+                <button class="btn active" data-filter="*">Tout</button>
+                {% for tag in infosCats.tags %}
+                <button class="btn" data-filter="{{ tag[0] }}">{{ tag[1] }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="pixel-portfolio">
+
+            {% for template in  infosCats.templates %}
+                <div class="single_gallery_item visual wow fadeInUp" data-wow-delay="0.2s">
+                    <img src="{{ path('al_get_image',{name:template.wt_vignette,resizetype:'crop',format:'800X1022'}) }}" alt="">
+                    <div class="hover-content text-center d-flex align-items-center justify-content-center">
+                        <div class="hover-text">
+                            <a href="{{ path('produit',{ref:'site-web',id:template.idw_templates}) }}" alt="{{ template.wt_name }}" class="zoom-img"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <h4>{{ template.wt_name }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+
+        <!-- Pagination
+        <div class="container-fluid">
+            <nav aria-label="Page navigation">
+                <ul class="pagination mt-100 justify-content-center">
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                </ul>
+            </nav>
+        </div>-->
+    </div>
    
 
 {% endblock %}

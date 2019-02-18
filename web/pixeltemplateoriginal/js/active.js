@@ -98,9 +98,9 @@
 
     // :: 6.0 Magnific Popup Active Code
     if ($.fn.magnificPopup) {
-        /*$('.zoom-img').magnificPopup({
+        $('.zoom-img').magnificPopup({
             type: 'image'
-        });*/
+        });
     }
     // :: 7.0 ScrollUp Active Code
     if ($.fn.scrollUp) {
