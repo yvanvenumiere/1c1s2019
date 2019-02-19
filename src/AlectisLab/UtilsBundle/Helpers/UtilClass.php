@@ -106,6 +106,12 @@ class UtilClass
 
     }
 
+    public function hashInt($toAsh,$valueRef)
+    {
+        $toAsh=$toAsh+$valueRef;
+
+    }
+
 
 
 

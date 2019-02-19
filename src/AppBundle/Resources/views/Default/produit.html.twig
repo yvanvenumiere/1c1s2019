@@ -11,84 +11,177 @@
 
 {% block thecontent %}
 
-    <!--<section class="hero-area">
-        <div class="hero-slideshow owl-carousel">
+    <section class="section-padding-100-0 container">
+        <div class="row">
+            <!-- Feature Thumbnail -->
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for key,media in infos.medias %}
 
-            {% for media in infos.medias %}
-                <div class="single-slide">
+                            <li data-target="#carouselExampleControls" data-slide-to="{{ key }}" {% if key==0 %} class="active" {% endif %}></li>
 
-                    <div class="slide-bg-img bg-img" style="background-image: url({{ path('al_get_image',{name:media.media_name,resizetype:'resizeHomoW',format:'1200'}) }});"></div>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        <!--<div class="carousel-item active">
 
-                    <div class="container h-100">
-                        <div class="row h-100 align-items-center">
-                            <div class="col-12 col-lg-9">
-                                <div class="welcome-text">
-                                    <h2 data-animation="fadeInUp" data-delay="300ms"></h2>
-                                    <h4 data-animation="fadeInUp" data-delay="500ms"></h4>
-                                    <a href="#" class="btn pixel-btn mt-50" data-animation="fadeInUp" data-delay="700ms"></a>
-                                </div>
+                        </div>
+                        <div class="carousel-item">
+
+                        </div>
+                        <div class="carousel-item">
+
+                        </div>-->
+                        {% for key,media in infos.medias %}
+                            <div class="carousel-item tac{% if key==0 %} active {% endif %}">
+                                <img src="{{ path('al_get_image',{name:media.media_name,resizetype:'crop',format:'800X600'}) }}"/>
                             </div>
+                        {% endfor %}
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-xs-6">
+            <div class="feature-content">
+                <h1>{{ infos.wt_name }}</h1>
+                <p>{{ infos.wt_description }}</p>
+                <div class="accordions" id="accordion" role="tablist" aria-multiselectable="true">
+                    <!-- single accordian area -->
+                    <div class="panel single-accordion">
+                        <h6><a role="button" class="collapsed" aria-expanded="false" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Mauris gravida neque augue, euismod
+                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                            </a></h6>
+                        <div id="collapseOne" class="accordion-content collapse" style="">
+                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
+                        </div>
+                    </div>
+                    <!-- single accordian area -->
+                    <div class="panel single-accordion">
+                        <h6>
+                            <a role="button" class="collapsed" aria-expanded="false" aria-controls="collapseTwo" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">Pellentesque sit amet velit a libero viverra
+                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                            </a>
+                        </h6>
+                        <div id="collapseTwo" class="accordion-content collapse" style="">
+                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
+                        </div>
+                    </div>
+                    <!-- single accordian area -->
+                    <div class="panel single-accordion">
+                        <h6>
+                            <a role="button" aria-expanded="false" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">Quisque fringilla orci lacus, ut vestibulum
+                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                            </a>
+                        </h6>
+                        <div id="collapseThree" class="accordion-content collapse">
+                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
+                        </div>
+                    </div>
+
+                    <div class="panel single-accordion">
+                        <h6>
+                            <a role="button" aria-expanded="false" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">Quisque fringilla orci lacus, ut vestibulum
+                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                            </a>
+                        </h6>
+                        <div id="collapseThree" class="accordion-content collapse">
+                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
 
 
-        </div>
-
-    </section>-->
-<section class="section-padding-100-0 container">
-    <div class="row">
-        <!-- Feature Thumbnail -->
-        <div class="col-lg-6 col-md-6 col-xs-6">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    {% for key,media in infos.medias %}
-                        <div class="carousel-item tac{% if key==0 %} active {% endif %}">
-                            <img src="{{ path('al_get_image',{name:media.media_name,resizetype:'resizeHomoH',format:'400'}) }}"/>
-                        </div>
-                        <li data-target="#carouselExampleControls" data-slide-to="{{ key }}" {% if key==0 %} class="active" {% endif %}></li>
-
-                    {% endfor %}
-                </ol>
-                <div class="carousel-inner">
-                    <!--<div class="carousel-item active">
-
-                    </div>
-                    <div class="carousel-item">
-
-                    </div>
-                    <div class="carousel-item">
-
-                    </div>-->
-                    {% for key,media in infos.medias %}
-                        <div class="carousel-item tac{% if key==0 %} active {% endif %}">
-                            <img src="{{ path('al_get_image',{name:media.media_name,resizetype:'resizeHomoH',format:'400'}) }}"/>
-                        </div>
-                    {% endfor %}
-
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </div>
             </div>
         </div>
+    </section>
 
+    <section class="pixel-prices-area d-flex flex-wrap section-padding-100">
 
-        <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="feature-content">
-            <h1>{{ infos.wt_name }}</h1>
-            <p>{{ infos.wt_description }}</p>
-
+        <!-- Single Price Table Area -->
+        <div class="single-price-table-area mb-100">
+            <div class="price-value">
+                <h2><span>9</span><span>/ month</span></h2>
+            </div>
+            <h2>Bronze Pack</h2>
+            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
+            <ul class="price-desc">
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+            </ul>
+            <a href="#" class="btn pixel-btn">view project</a>
         </div>
+
+        <!-- Single Price Table Area -->
+        <div class="single-price-table-area mb-100">
+            <div class="price-value">
+                <h2><span>19</span><span>/ month</span></h2>
+            </div>
+            <h2>Silver Pack</h2>
+            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
+            <ul class="price-desc">
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+            </ul>
+            <a href="#" class="btn pixel-btn">view project</a>
         </div>
-    </div>
-</section>
+
+        <!-- Single Price Table Area -->
+        <div class="single-price-table-area active mb-100">
+            <div class="price-value">
+                <h2><span>29</span><span>/ month</span></h2>
+            </div>
+            <h2>Gold Pack</h2>
+            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
+            <ul class="price-desc">
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+            </ul>
+            <a href="#" class="btn pixel-btn">view project</a>
+        </div>
+
+        <!-- Single Price Table Area -->
+        <div class="single-price-table-area mb-100">
+            <div class="price-value">
+                <h2><span>39</span><span>/ month</span></h2>
+            </div>
+            <h2>Platinum Pack</h2>
+            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
+            <ul class="price-desc">
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+            </ul>
+            <a href="#" class="btn pixel-btn">view project</a>
+        </div>
+
+    </section>
 
 
 

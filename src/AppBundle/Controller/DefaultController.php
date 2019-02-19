@@ -33,7 +33,7 @@ class DefaultController extends AlectisBaseController
     public function produitAction($ref,$id)
     {
         $produit=CustomQueries::getProduit($this->ormManager,$id);
-
+        //echo "<pre>";var_dump($produit);exit;
         return $this->render('AppBundle:Default:produit.html.twig',array('infos'=>$produit));
     }
 

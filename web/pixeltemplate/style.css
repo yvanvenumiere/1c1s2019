@@ -400,14 +400,14 @@ img {
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.15); }
   .pixel-btn.btn-3 {
     background-color: transparent;
-    color: #688bfe;
-    border: 2px solid #688bfe;
+    color: #9e0070;
+    border: 2px solid #9e0070;
     line-height: 44px; }
     .pixel-btn.btn-3:hover, .pixel-btn.btn-3:focus {
       background-color: transparent;
-      color: #ff7902;
+      color: #000000;
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
-      border: 2px solid #ff7902; }
+      border: 2px solid #000000; }
 
 /* :: 4.0 Header Area CSS */
 .header-area {
@@ -791,7 +791,7 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 121, 2, 0.9);
+    background-color: rgba(158, 0, 112, 0.9);
     opacity: 0;
     visibility: hidden;
     -webkit-transition-duration: 500ms;
@@ -1650,7 +1650,7 @@ img {
       -webkit-transition-duration: 500ms;
       -o-transition-duration: 500ms;
       transition-duration: 500ms;
-      background-color: #ff7902;
+      background-color: #9e0070;
       color: #ffffff; }
 .single-accordion .accordion-content {
   border-top: 0 solid transparent;
