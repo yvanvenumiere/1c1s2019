@@ -1,0 +1,12 @@
+@media screen and (max-width: 526px)
+{
+    .pixel-btn
+    {
+        font-size:11px !important;
+        min-width:auto !important;
+        padding-left:10px !important;
+        padding-right:10px !important;
+
+    }
+    .pixel-btn::after{display:none !important;content:'';}
+}

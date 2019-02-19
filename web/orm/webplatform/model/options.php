@@ -71,6 +71,26 @@
 					"formLabel"=>"opt_code"
 				);
 			
+				$this->arrayFields["opt_is_visible"]=array
+				(
+					"type"=>"tinyint(4)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"1",
+					"extra"=>"",
+					"formLabel"=>"opt_is_visible"
+				);
+			
+				$this->arrayFields["opt_is_cool"]=array
+				(
+					"type"=>"tinyint(4)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"1",
+					"extra"=>"",
+					"formLabel"=>"opt_is_cool"
+				);
+			
 					
 					
 					$this->checker=new formCheck();
@@ -1028,6 +1048,26 @@
 					"default"=>"",
 					"extra"=>"",
 					"formLabel"=>"opt_code"
+				);
+			
+				$this->arrayFields["opt_is_visible"]=array
+				(
+					"type"=>"tinyint(4)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"1",
+					"extra"=>"",
+					"formLabel"=>"opt_is_visible"
+				);
+			
+				$this->arrayFields["opt_is_cool"]=array
+				(
+					"type"=>"tinyint(4)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"1",
+					"extra"=>"",
+					"formLabel"=>"opt_is_cool"
 				);
 			
 					
