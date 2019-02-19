@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5f80c534-d8fe-48b0-811a-3a72612b0cc8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlectisLab/UtilsBundle/Helpers/UtilClass.php" afterPath="$PROJECT_DIR$/src/AlectisLab/UtilsBundle/Helpers/UtilClass.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/accueil.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/accueil.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/css/main.css" afterPath="$PROJECT_DIR$/web/assets/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pixeltemplate/style.css" afterPath="$PROJECT_DIR$/web/pixeltemplate/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/pixeltemplate/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="1652" column="31" lean-forward="false" selection-start-line="1652" selection-start-column="31" selection-end-line="1652" selection-end-column="31" />
+            <state relative-caret-position="148">
+              <caret line="1622" column="29" lean-forward="false" selection-start-line="1622" selection-start-column="29" selection-end-line="1622" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -55,18 +52,18 @@
       <file leaf-file-name="produit.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="325">
+              <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="154">
+              <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -100,6 +97,8 @@
       <find>header-are</find>
       <find>pixel-btn.btn-3</find>
       <find>9e7</find>
+      <find>single-accordion h6 a.collapsed</find>
+      <find>single-accordion h6 a</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,14 +117,14 @@
         <option value="&lt;14a83afd-f534-4cea-b5ec-733cfca66e48&gt;/var/www/christina-alpedhuez.dev01.illusio.fr/web/app/Resources/translations/messages.en.yml" />
         <option value="$PROJECT_DIR$/web/pixeltemplate/js/active.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Helpers/CustomQueries.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig" />
         <option value="$PROJECT_DIR$/web/assets/css/produit.css" />
         <option value="$PROJECT_DIR$/src/AlectisLab/UtilsBundle/Helpers/UtilClass.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/accueil.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/web/assets/css/main.css" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" />
         <option value="$PROJECT_DIR$/web/pixeltemplate/style.css" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig" />
       </list>
     </option>
   </component>
@@ -788,12 +787,12 @@
       <workItem from="1550519686529" duration="2382000" />
       <workItem from="1550524291506" duration="718000" />
       <workItem from="1550532050819" duration="2109000" />
-      <workItem from="1550539778368" duration="2770000" />
+      <workItem from="1550539778368" duration="3665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27159000" />
+    <option name="totallyTimeSpent" value="28054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
@@ -1180,28 +1179,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/pixeltemplate/services.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="211" column="4" lean-forward="false" selection-start-line="211" selection-start-column="4" selection-end-line="281" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1214,6 +1195,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/pixeltemplate/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="1622" column="29" lean-forward="false" selection-start-line="1622" selection-start-column="29" selection-end-line="1622" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <folding>
+            <element signature="e#40#99#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/accueil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -1222,18 +1229,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Base/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pixeltemplate/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="1652" column="31" lean-forward="false" selection-start-line="1652" selection-start-column="31" selection-end-line="1652" selection-end-column="31" />
+        <state relative-caret-position="154">
+          <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding />
         </state>
       </provider>

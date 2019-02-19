@@ -56,54 +56,20 @@
             <div class="feature-content">
                 <h1>{{ infos.wt_name }}</h1>
                 <p>{{ infos.wt_description }}</p>
-                <div class="accordions" id="accordion" role="tablist" aria-multiselectable="true">
-                    <!-- single accordian area -->
-                    <div class="panel single-accordion">
-                        <h6><a role="button" class="collapsed" aria-expanded="false" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Mauris gravida neque augue, euismod
-                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                            </a></h6>
-                        <div id="collapseOne" class="accordion-content collapse" style="">
-                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
+                <!--<div class="accordions" id="accordion" role="tablist" aria-multiselectable="true">
+                    {% for key,feature in infos.features %}
+                        <div class="panel single-accordion">
+                            <h6><a role="button" class="collapsed" aria-expanded="false" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}">{{ feature.feature_text }}
+                                    <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                </a></h6>
+                            <div id="collapse{{ key }}" class="accordion-content collapse" style="">
+                                <p></p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- single accordian area -->
-                    <div class="panel single-accordion">
-                        <h6>
-                            <a role="button" class="collapsed" aria-expanded="false" aria-controls="collapseTwo" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">Pellentesque sit amet velit a libero viverra
-                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                            </a>
-                        </h6>
-                        <div id="collapseTwo" class="accordion-content collapse" style="">
-                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
-                        </div>
-                    </div>
-                    <!-- single accordian area -->
-                    <div class="panel single-accordion">
-                        <h6>
-                            <a role="button" aria-expanded="false" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">Quisque fringilla orci lacus, ut vestibulum
-                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                            </a>
-                        </h6>
-                        <div id="collapseThree" class="accordion-content collapse">
-                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
-                        </div>
-                    </div>
+                    {% endfor %}
 
-                    <div class="panel single-accordion">
-                        <h6>
-                            <a role="button" aria-expanded="false" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">Quisque fringilla orci lacus, ut vestibulum
-                                <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                            </a>
-                        </h6>
-                        <div id="collapseThree" class="accordion-content collapse">
-                            <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante.</p>
-                        </div>
-                    </div>
-                </div>
+                </div>-->
 
 
             </div>
