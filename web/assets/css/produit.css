@@ -7,6 +7,10 @@
     top:120px;
     width:100%;
 }
+#contCta
+{
+    text-align:center;
+}
 .single-price-table-area .price-value h2 span:first-child::after
 {
     display:none !important;content:'' !important;
@@ -25,5 +29,9 @@
     {
 
         width:auto;
+    }
+    #contCta
+    {
+        text-align:left;
     }
 }

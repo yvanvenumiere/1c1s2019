@@ -1,5 +1,6 @@
 .tac{text-align:center;}
 .relative{position:relative;}
+.bold{font-weight:bold;}
 
 .aer15{margin-top:15px;margin-bottom:15px;}
 
@@ -29,6 +30,7 @@
 .color1{color:#9e0070;}
 .color2{color:green;}
 .color3{color:red;}
+.color4{color:white;}
 
 
 /*TEMPLATE GLOBAL STYLES*/

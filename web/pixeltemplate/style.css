@@ -1318,6 +1318,13 @@ img {
     .pixel-prices-area {
       padding-top: 0; } }
 
+.single-price-table-area h2
+{
+  padding-top:15px;
+  padding-bottom:15px;
+
+}
+
 .single-price-table-area {
   position: relative;
   z-index: 1;

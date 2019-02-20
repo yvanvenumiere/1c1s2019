@@ -11,34 +11,52 @@
 
 {% block thecontent %}
 
-    <section class="section-padding-100-0 container">
+    <section class="section-padding-100-0 container relative">
+        <div class="row aer15">
+            <div class="col-lg-6 col-md-6 col-xs-6"><h1 class="color1">{{ infos.wt_name }}</h1></div>
+            <div class="col-lg-6 col-md-6 col-xs-6" id="contCta">
+                <a href="#" class="btn pixel-btn btn-3 m-2">Essayer maintenant</a>
+                <a href="#" class="btn pixel-btn m-2">Voir un aperçu</a>
+            </div>
+        </div>
         <div class="row">
             <!-- Feature Thumbnail -->
             <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="feature-content">
+
+                    <p>
+                        {{ infos.wt_description }}<br/>
+                    <ul>
+                        {% for key,feature in infos.features %}
+                            <li class="bold"> <i class=" color1 fa fa-check"></i> {{ feature.feature_text }}</li>
+                        {% endfor %}
+                    </ul>
+                    </p>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-xs-6">
+
+
+
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
+                    <!--<ol class="carousel-indicators">
                         {% for key,media in infos.medias %}
 
                             <li data-target="#carouselExampleControls" data-slide-to="{{ key }}" {% if key==0 %} class="active" {% endif %}></li>
 
                         {% endfor %}
-                    </ol>
+                    </ol>-->
                     <div class="carousel-inner">
-                        <!--<div class="carousel-item active">
-
-                        </div>
-                        <div class="carousel-item">
-
-                        </div>
-                        <div class="carousel-item">
-
-                        </div>-->
                         {% for key,media in infos.medias %}
                             <div class="carousel-item tac{% if key==0 %} active {% endif %}">
                                 <img src="{{ path('al_get_image',{name:media.media_name,resizetype:'crop',format:'800X600'}) }}"/>
                             </div>
                         {% endfor %}
-
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,102 +68,91 @@
                     </a>
                 </div>
             </div>
-
-
-            <div class="col-lg-6 col-md-6 col-xs-6">
-            <div class="feature-content">
-                <h1>{{ infos.wt_name }}</h1>
-                <p>{{ infos.wt_description }}</p>
-                <!--<div class="accordions" id="accordion" role="tablist" aria-multiselectable="true">
-                    {% for key,feature in infos.features %}
-                        <div class="panel single-accordion">
-                            <h6><a role="button" class="collapsed" aria-expanded="false" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ key }}">{{ feature.feature_text }}
-                                    <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                </a></h6>
-                            <div id="collapse{{ key }}" class="accordion-content collapse" style="">
-                                <p></p>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                </div>-->
-
-
-            </div>
-            </div>
         </div>
+        <!--<div class="tac" id="tryNow">
+            <a href="#" class="btn pixel-btn btn-3 m-2">Essayer maintenant</a>
+            <a href="#" class="btn pixel-btn m-2">Voir un aperçu</a>
+        </div>-->
     </section>
 
-    <section class="pixel-prices-area d-flex flex-wrap section-padding-100">
+    <section class="pixel-prices-area d-flex flex-wrap section-padding-100 mt30">
 
-        <!-- Single Price Table Area -->
-        <div class="single-price-table-area mb-100">
-            <div class="price-value">
-                <h2><span>9</span><span>/ month</span></h2>
+        {% for key,pack in infos.packs %}
+            <div class="single-price-table-area mb-100">
+                <div class="price-value color4">
+                    <h2>
+                        {% if key!="GRATOS" %}
+                        <span class="color4">{{ infos.prix[key] }} </span><span class="color4"> € / mois</span>
+                        {% else %}
+                        -
+                        {% endif %}
+                    </h2>
+                </div>
+                <h2 class="bold color4">{{ infos.corresPacksLabels[key] }}</h2>
+                <ul class="price-desc">
+                    {% for key2,opt in infos.packs[key] %}
+                        <li>{% if opt.enabled==1 %} <i class=" color2 fa fa-check"></i> {% else %} <i class=" color3 fa fa-times"></i> {% endif %}<br/> {{ opt.label }}</li>
+
+                    {% endfor %}
+                    <!--<li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #1</li>
+                    <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #2</li>
+                    <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #3</li>
+                    <li><img src="/pixeltemplate/img/core-img/caution.png" alt=""> Available Feature #4</li>
+                    <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #5</li>-->
+                </ul>
+                <a href="#" class="btn pixel-btn">view project</a>
             </div>
-            <h2>Bronze Pack</h2>
-            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
-            <ul class="price-desc">
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
-                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
-            </ul>
-            <a href="#" class="btn pixel-btn">view project</a>
-        </div>
+        {% endfor %}
 
-        <!-- Single Price Table Area -->
-        <div class="single-price-table-area mb-100">
+
+
+
+        <!--<div class="single-price-table-area mb-100">
             <div class="price-value">
                 <h2><span>19</span><span>/ month</span></h2>
             </div>
             <h2>Silver Pack</h2>
-            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
             <ul class="price-desc">
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
-                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="/pixeltemplate/img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #5</li>
             </ul>
             <a href="#" class="btn pixel-btn">view project</a>
         </div>
 
-        <!-- Single Price Table Area -->
+
         <div class="single-price-table-area active mb-100">
             <div class="price-value">
                 <h2><span>29</span><span>/ month</span></h2>
             </div>
             <h2>Gold Pack</h2>
-            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
             <ul class="price-desc">
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
-                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="/pixeltemplate/img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #5</li>
             </ul>
             <a href="#" class="btn pixel-btn">view project</a>
         </div>
 
-        <!-- Single Price Table Area -->
+
         <div class="single-price-table-area mb-100">
             <div class="price-value">
                 <h2><span>39</span><span>/ month</span></h2>
             </div>
             <h2>Platinum Pack</h2>
-            <p>Lorem ipsum dolor sit amet, consect- etur adipiscing elit. Ut rutrum quis sem sed pharetra.</p>
             <ul class="price-desc">
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #1</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #2</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #3</li>
-                <li><img src="img/core-img/caution.png" alt=""> Available Feature #4</li>
-                <li><img src="img/core-img/correct.png" alt=""> Available Feature #5</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #1</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #2</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #3</li>
+                <li><img src="/pixeltemplate/img/core-img/caution.png" alt=""> Available Feature #4</li>
+                <li><img src="/pixeltemplate/img/core-img/correct.png" alt=""> Available Feature #5</li>
             </ul>
             <a href="#" class="btn pixel-btn">view project</a>
-        </div>
+        </div>-->
 
     </section>
 
