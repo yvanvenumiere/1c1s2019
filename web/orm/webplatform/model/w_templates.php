@@ -101,6 +101,16 @@
 					"formLabel"=>"wt_description"
 				);
 			
+				$this->arrayFields["wt_hook_sentence"]=array
+				(
+					"type"=>"varchar(150)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"wt_hook_sentence"
+				);
+			
 					
 					
 					$this->checker=new formCheck();
@@ -1088,6 +1098,16 @@
 					"default"=>"",
 					"extra"=>"",
 					"formLabel"=>"wt_description"
+				);
+			
+				$this->arrayFields["wt_hook_sentence"]=array
+				(
+					"type"=>"varchar(150)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"wt_hook_sentence"
 				);
 			
 					

@@ -1429,7 +1429,7 @@ img {
       -webkit-transition-duration: 500ms;
       -o-transition-duration: 500ms;
       transition-duration: 500ms;
-      border-bottom: 1px solid #dfdfdf;
+      /*border-bottom: 1px solid #dfdfdf;*/
       padding: 10px 0;
       padding-left:10px;padding-right:10px;
       color: #969696;
