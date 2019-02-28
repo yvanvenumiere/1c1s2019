@@ -14,7 +14,7 @@
         <div class="section-padding-100-0 aer20 tac relative">
             <h1 class="color1 bold">{{ infos.wt_hook_sentence }}</h1>
         </div>
-        <div id="carouselExampleControls" class="relative carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" class="relative carousel slide aer50" data-ride="carousel">
             <!--<ol class="carousel-indicators">
                         {% for key,media in infos.medias %}
 
@@ -38,13 +38,13 @@
                 <span class="sr-only">Next</span>
             </a>
             <div id="infosCarousel">
-                <p id="descWt" class="aer15 color4 ts01">
+                <p id="descWt" class="aer15 padInfo bold size1 ts01 color4 ts01">
                     {{ infos.wt_description }}
 
                 </p>
-                <ul>
+                <ul class="padInfo">
                     {% for key,feature in infos.features %}
-                        <li class="bold color4"> <i class=" color4 fa fa-check"></i> {{ feature.feature_text }}</li>
+                        <li class=" ts01 size1 color4"> <i class=" color4 fa fa-check"></i> {{ feature.feature_text }}</li>
                     {% endfor %}
                 </ul>
 

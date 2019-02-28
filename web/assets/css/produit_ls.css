@@ -26,12 +26,14 @@
 
 #descWt
 {
-    padding:12px;
+    padding-top:15px;
 }
+
+.padInfo{padding-left:26px;padding-right:26px;}
 #infosCarousel ul
 {
-    padding-left:12px !important;
-    line-height:24px;
+
+    line-height:32px;
 }
 #contCta
 {
@@ -46,7 +48,28 @@
     min-height:62px;
 }
 
+@media screen and (max-width: 992px){
+    .size1{font-size:17px;}
+}
 @media screen and (max-width: 768px){
+
+    #infosCarousel
+    {
+        width:100%;
+        height:70%;
+        top:30%;
+    }
+    #infosCarousel ul
+    {
+        line-height:25px;
+    }
+    .aer15
+    {
+        margin-top:4px;
+        margin-bottom:4px;
+
+    }
+    .size1{font-size:13px;}
     #carouselExampleControls
     {
         margin-top:30px;

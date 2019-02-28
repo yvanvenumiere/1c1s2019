@@ -1350,10 +1350,10 @@ img {
     .single-price-table-area {
       /*padding: 50px 20px;*/
       -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-      flex: 0 0 50%;
-      max-width: 50%;
-      width: 50%;
+      -ms-flex: 0 0 48%;
+      flex: 0 0 48%;
+      max-width: 48%;
+      width: 48%;
       margin-bottom: 0 !important; } }
   @media only screen and (max-width: 767px) {
     .single-price-table-area {
@@ -1363,6 +1363,8 @@ img {
       flex: 0 0 100%;
       max-width: 100%;
       width: 100%;
+      margin-left:0% !important;
+      margin-right:0% !important;
       margin-bottom: 0 !important; } }
   .single-price-table-area .price-value , .single-price-table-area h2{
     background-color:#9e0070;

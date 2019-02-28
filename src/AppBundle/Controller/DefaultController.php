@@ -34,7 +34,7 @@ class DefaultController extends AlectisBaseController
     {
         $produit=CustomQueries::getProduit($this->ormManager,$id);
         //echo "<pre>";var_dump($produit);exit;
-        return $this->render('AppBundle:Default:produit_landing_style.html.twig',array('infos'=>$produit));
+        return $this->render('AppBundle:Default:produit.html.twig',array('infos'=>$produit));
     }
 
 
