@@ -89,6 +89,7 @@ class AlectisBaseController extends Controller
 
 
 
+
     public function disconnect($role)
     {
         $session = new Session();

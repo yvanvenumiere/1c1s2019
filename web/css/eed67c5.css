@@ -20,8 +20,6 @@
     min-height:62px;
 }
 
-
-
 .contact-form-area input,.contact-form-area input::placeholder,.contact-form-area textarea,.contact-form-area textarea::placeholder{color:#9e0070 !important;}
 
 .contact-form-area input:focus,

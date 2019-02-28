@@ -43,7 +43,7 @@
 			
 				$this->arrayFields["lead_date_save"]=array
 				(
-					"type"=>"mediumint(23)",
+					"type"=>"bigint(40)",
 					"canBeNull"=>"NO",
 					"key"=>"",
 					"default"=>"",
@@ -109,6 +109,36 @@
 					"default"=>"0",
 					"extra"=>"",
 					"formLabel"=>"lead_unsuscribed"
+				);
+			
+				$this->arrayFields["lead_utm_source"]=array
+				(
+					"type"=>"varchar(200)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_utm_source"
+				);
+			
+				$this->arrayFields["lead_utm_campaign"]=array
+				(
+					"type"=>"varchar(200)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_utm_campaign"
+				);
+			
+				$this->arrayFields["lead_utm_medium"]=array
+				(
+					"type"=>"varchar(200)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_utm_medium"
 				);
 			
 					
@@ -1042,7 +1072,7 @@
 			
 				$this->arrayFields["lead_date_save"]=array
 				(
-					"type"=>"mediumint(23)",
+					"type"=>"bigint(40)",
 					"canBeNull"=>"NO",
 					"key"=>"",
 					"default"=>"",
@@ -1108,6 +1138,36 @@
 					"default"=>"0",
 					"extra"=>"",
 					"formLabel"=>"lead_unsuscribed"
+				);
+			
+				$this->arrayFields["lead_utm_source"]=array
+				(
+					"type"=>"varchar(200)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_utm_source"
+				);
+			
+				$this->arrayFields["lead_utm_campaign"]=array
+				(
+					"type"=>"varchar(200)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_utm_campaign"
+				);
+			
+				$this->arrayFields["lead_utm_medium"]=array
+				(
+					"type"=>"varchar(200)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_utm_medium"
 				);
 			
 					

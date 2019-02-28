@@ -63,10 +63,19 @@
     opacity:0.5;
 }
 
+
+
 .carousel-indicators li .active
 {
 
     opacity:1 !important;
+}
+
+#mainLoader
+{
+    position:absolute;
+    bottom:5px;left:50%;
+    opacity:0;
 }
 
 

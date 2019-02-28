@@ -16,6 +16,7 @@
         {% stylesheets
         
         'assets/css/main.css'
+        'assets/noty/noty.css'
         'assets/css/main_responsive.css'
         'pixeltemplate/css/bootstrap.min.css'
         'pixeltemplate/css/font-awesome.min.css'
@@ -49,7 +50,7 @@
         <div class="classy-nav-container breakpoint-off">
             <div class="container-fluid">
                 <!-- Menu -->
-                <nav class="classy-navbar justify-content-between" id="pixelNav">
+                <nav class="classy-navbar relative justify-content-between" id="pixelNav">
 
                     <!-- Nav brand -->
                     <a href="index.html" class="nav-brand"><img src="/assets/layout/totoclic.png" width="120" height="auto" alt=""></a>
@@ -152,14 +153,15 @@
                         </div>
                         <!-- Nav End -->
                     </div>
+                    <img id="mainLoader" src="/assets/layout/loading.gif"/>
                 </nav>
             </div>
         </div>
     </div>
 </header>
-
+<div id="mainWrapper">
 {% block thecontent %} content {% endblock %}
-
+</div>
 <!-- ##### Footer Area Start ##### -->
 <footer class="footer-area">
     <!--<div class="container-fluid">
@@ -244,7 +246,9 @@
     'pixeltemplate/js/bootstrap/bootstrap.min.js'
     'pixeltemplate/js/plugins/plugins.js'
     'pixeltemplate/js/active.js'
-    'js/logic.js'
+    'assets/js/jtransit.js'
+    'assets/noty/noty.js'
+    'assets/js/logic.js'
 
     %}
     <script src="{{ asset_url }}"></script>

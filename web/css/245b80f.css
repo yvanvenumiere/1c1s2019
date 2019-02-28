@@ -1,0 +1,92 @@
+#carouselExampleControls
+{background-color:#9e0070;}
+
+#tryNow
+{
+    position:absolute;
+    top:120px;
+    width:100%;
+}
+
+.imgCarousel
+{
+    background-size:cover;
+    background-position:center top;
+    height:500px;
+}
+#infosCarousel
+{
+    position:absolute;
+    width:50%;
+    right:0px;
+    top:0px;
+    height:100%;
+    background-color: rgba(158, 0, 112, 0.9);
+}
+
+#descWt
+{
+    padding-top:15px;
+}
+
+.padInfo{padding-left:26px;padding-right:26px;}
+#infosCarousel ul
+{
+
+    line-height:32px;
+}
+#contCta
+{
+    text-align:center;
+}
+.single-price-table-area .price-value h2 span:first-child::after
+{
+    display:none !important;content:'' !important;
+}
+.single-price-table-area .price-value
+{
+    min-height:62px;
+}
+
+@media screen and (max-width: 992px){
+    .size1{font-size:17px;}
+}
+@media screen and (max-width: 768px){
+
+    #infosCarousel
+    {
+        width:100%;
+        height:70%;
+        top:30%;
+    }
+    #infosCarousel ul
+    {
+        line-height:25px;
+    }
+    .aer15
+    {
+        margin-top:4px;
+        margin-bottom:4px;
+
+    }
+    .size1{font-size:13px;}
+    #carouselExampleControls
+    {
+        margin-top:30px;
+    }
+    #tryNow
+    {
+
+        width:auto;
+    }
+    #contCta
+    {
+        text-align:left;
+    }
+
+    .imgCarousel
+    {
+
+        height:300px;
+    }
+}

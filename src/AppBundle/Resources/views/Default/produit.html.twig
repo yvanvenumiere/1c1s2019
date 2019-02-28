@@ -9,13 +9,99 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        function init_produit()
+        {
+            //alert("produit");
+            $("#sendQuestion").click(function()
+            {
+                GV.showLoading();
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ path('question') }}",
+                    data:{email:$("#email").val(),message:$("#message").val()},
+                    success: function(retour)
+                    {
+
+                        GV.hideLoading();
+                        if(retour.result=="ok")
+                        {
+
+                            $(".fieldQuestionInput").val('');
+                            $(".fieldQuestionInput").removeClass("is-invalid");
+
+                            //$(".container-scroller").scrollTop(0);
+                            new Noty({
+
+                                text: retour.message,
+                                timeout:4000,
+                                type:"success"
+
+                            }).show();
+
+                        }
+                        else
+                        {
+
+                            var messageRetour="<strong>"+retour.message+"</strong>";
+                            if(retour.errors)
+                            {
+                                for(var erreur in retour.errors)
+                                {
+                                    console.log(erreur)
+                                    if(retour.errors[erreur].isValid==false)
+                                    {$('#'+erreur).addClass("is-invalid");}
+                                    //messageRetour+="<br/>"+retour.errors[erreur.];
+                                }
+                            }
+                            new Noty({
+
+                                text: messageRetour,
+                                timeout:4000,
+                                type:"error"
+
+                            }).show();
+                        }
+
+
+                    },
+                    dataType: 'json'
+                });
+            });
+
+            $("#tryBt").click(function()
+            {
+                $("#modalTry").modal('show');
+            });
+
+
+        }
+
+
+        GV.launchFunction=init_produit;
+
+
+    </script>
+    {% javascripts
+    'assets/js/produit.js'
+
+    %}
+
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+{% endblock %}
+
 {% block thecontent %}
 
     <section class="section-padding-100-0 container relative">
         <div class="row aer15">
             <div class="col-lg-6 col-md-6 col-xs-6"><h1 class="color1 bold">{{ infos.wt_hook_sentence }}</h1></div>
             <div class="col-lg-6 col-md-6 col-xs-6" id="contCta">
-                <a href="#" class="btn pixel-btn btn-3 m-2">Essayer maintenant</a>
+                <a href="#" id="tryBt" class="btn pixel-btn btn-3 m-2">Essayer maintenant</a>
                 <a href="#" class="btn pixel-btn m-2">Voir un aperçu</a>
             </div>
         </div>
@@ -108,9 +194,9 @@
                     <!-- Contact Form -->
                     <div class="contact-form-area text-center">
                         <form action="#" method="post">
-                            <input type="email" name="email" class="form-control wow fadeInUp" data-wow-delay="300ms" placeholder="E-mail">
-                            <textarea name="message" class="form-control wow fadeInUp" data-wow-delay="700ms" placeholder="Message"></textarea>
-                            <a href="#" class="btn pixel-btn">Envoyer</a>
+                            <input type="email" name="email" id="email" class="form-control fieldQuestionInput wow fadeInUp" data-wow-delay="300ms" placeholder="E-mail">
+                            <textarea name="message" id="message" class="form-control wow fieldQuestionInput fadeInUp" data-wow-delay="700ms" placeholder="Message"></textarea>
+                            <a href="#" id="sendQuestion" class="btn pixel-btn">Envoyer</a>
                         </form>
                     </div>
                 </div>
@@ -119,26 +205,29 @@
         </div>
     </section>
 
+    <div class="modal fade" id="modalTry" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTryLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    essayer
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>-->
+                    <button type="button" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 {% endblock %}
 
-{% block javascripts %}
-    {{ parent() }}
 
-
-    <script type="text/javascript">
-
-        function init_accueil()
-        {
-
-
-        }
-
-
-        GV.launchFunction=init_accueil;
-
-
-    </script>
-{% endblock %}
 
