@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <formDescription reqLimit="10" formOrder="">
-     <idw_templates isGridVisible="true" dataType="int(11)" isVisibleInForm="false" isPrimaryKey="true" isFilterVisible="false">
+     <idleads isGridVisible="true" dataType="int(11)" isVisibleInForm="false" isPrimaryKey="true" isFilterVisible="false">
           <!--label displayed in the form-->
-          <label>idw_templates</label>
+          <label>idleads</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -36,10 +36,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </idw_templates>
-     <wt_name isGridVisible="true" dataType="varchar(100)" isVisibleInForm="true" isFilterVisible="true">
+     </idleads>
+     <lead_date_save isGridVisible="true" dataType="mediumint(23)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_name</label>
+          <label>lead_date_save</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -73,10 +73,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_name>
-     <wt_bundle_name isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+     </lead_date_save>
+     <lead_mail isGridVisible="true" dataType="varchar(200)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_bundle_name</label>
+          <label>lead_mail</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -110,10 +110,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_bundle_name>
-     <wt_assets_path_name isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+     </lead_mail>
+     <lead_lastname isGridVisible="true" dataType="varchar(150)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_assets_path_name</label>
+          <label>lead_lastname</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -147,10 +147,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_assets_path_name>
-     <wt_model isGridVisible="true" dataType="text" isVisibleInForm="true" isFilterVisible="true">
+     </lead_lastname>
+     <lead_firsname isGridVisible="true" dataType="varchar(150)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_model</label>
+          <label>lead_firsname</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -184,10 +184,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_model>
-     <wt_vignette isGridVisible="true" dataType="varchar(45)" isVisibleInForm="true" isFilterVisible="true">
+     </lead_firsname>
+     <lead_phone_mob isGridVisible="true" dataType="varchar(100)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_vignette</label>
+          <label>lead_phone_mob</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -221,10 +221,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_vignette>
-     <wt_description isGridVisible="true" dataType="varchar(1000)" isVisibleInForm="true" isFilterVisible="true">
+     </lead_phone_mob>
+     <lead_phone_fix isGridVisible="true" dataType="varchar(100)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_description</label>
+          <label>lead_phone_fix</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -258,10 +258,10 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_description>
-     <wt_hook_sentence isGridVisible="true" dataType="varchar(150)" isVisibleInForm="true" isFilterVisible="true">
+     </lead_phone_fix>
+     <lead_unsuscribed isGridVisible="true" dataType="tinyint(4)" isVisibleInForm="true" isFilterVisible="true">
           <!--label displayed in the form-->
-          <label>wt_hook_sentence</label>
+          <label>lead_unsuscribed</label>
           <!--type of checking for the field : simple,mail,optional,int-->
           <cheking></cheking>
           <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
@@ -295,44 +295,7 @@
           <richTextEditorField enabled="false"/>
           <!--if you want to make a colorpicker field-->
           <colorPickerField enabled="false"/>
-     </wt_hook_sentence>
-     <wt_fdc isGridVisible="true" dataType="varchar(15)" isVisibleInForm="true" isFilterVisible="true">
-          <!--label displayed in the form-->
-          <label>wt_fdc</label>
-          <!--type of checking for the field : simple,mail,optional,int-->
-          <cheking></cheking>
-          <!--if you want to upload picture , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
-          <pictureField enabled="false" enabledForRelation="false">
-               <!--each child node represents a saving of the picture, resizeType can be set to resizeFix, resizeHomo, resizeHomoW, resizeHomoH, noResize; the path attribute is the path of the uploaded pictures, it must be relative to the index.php file of the admin directory wich is created and need end slash-->
-               <picture resizeType="type of resizing" width="width in pixels" height="height in pixels" ratio="height in pixels" path="path for the picture" isForAdmin="false">
-                    <acceptedFormats>
-                         <!--each child node represents a format of picture-->
-                         <format>.jpg</format>
-                    </acceptedFormats>
-               </picture>
-          </pictureField>
-          <!--if you want to upload files , you have to fill the infos in this node , if the enabled attribute is set to true, the configuration will work-->
-          <fileField enabled="false">
-               <!--configuration for the upload-->
-               <aFile path="path for the file">
-                    <!--each child node represents an accepted format-->
-                    <acceptedFormats>
-                         <format>.extension</format>
-                    </acceptedFormats>
-               </aFile>
-          </fileField>
-          <!--the informations can be a date... in this case we save a timestamp in the bdd-->
-          <dateField enabled="false"/>
-          <!--the informations can be a boolean... in this case we save a tinyint in the bdd-->
-          <booleanField enabled="false">
-               <boolean_true_label>oui</boolean_true_label>
-               <boolean_false_label>non</boolean_false_label>
-          </booleanField>
-          <!--the informations can be text, so we can implement a rich text editor, format can be dd/mm/yyyy or mm/dd/yyyy -->
-          <richTextEditorField enabled="false"/>
-          <!--if you want to make a colorpicker field-->
-          <colorPickerField enabled="false"/>
-     </wt_fdc>
+     </lead_unsuscribed>
      <!--this node contains all the callbacks for the differents action on this model -->
      <callbacks>
           <!--action that is executed when an element is saved-->

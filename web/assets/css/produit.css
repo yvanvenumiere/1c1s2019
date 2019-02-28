@@ -20,6 +20,13 @@
     min-height:62px;
 }
 
+.contact-form-area input,.contact-form-area input::placeholder,.contact-form-area textarea,.contact-form-area textarea::placeholder{color:#9e0070 !important;}
+
+.contact-form-area input:focus,
+.contact-form-area textarea:focus {
+    background-color: #f6f6f6;
+    box-shadow: none;
+    border-bottom-color: #9e0070; }
 @media screen and (max-width: 768px){
     #carouselExampleControls
     {

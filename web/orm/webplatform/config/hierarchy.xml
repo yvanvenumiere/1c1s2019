@@ -24,6 +24,9 @@
                <parentTable className="w_templates" fk="w_templates_idw_templates" usedCol="idw_templates" enabled="false" prompt="" icon=""/>
           </parentTables>
      </features>
+     <leads refName="leads" displayColumn="">
+          <parentTables/>
+     </leads>
      <media_template refName="media_template" displayColumn="">
           <parentTables>
                <parentTable className="medias" fk="medias_idmedias" usedCol="idmedias" enabled="false" prompt="" icon=""/>

@@ -9,11 +9,11 @@
 			 */
 			
 			/**
-			 * w_templates is a database object that can persist, delete and create forms for the w_templates table
+			 * leads is a database object that can persist, delete and create forms for the leads table
 			 *
 			 */
 			
-			class w_templates extends baseModel
+			class leads extends baseModel
 			{
 				public $isSavedElement=false;
 				public $checker;
@@ -26,99 +26,89 @@
 				{
 					
 					//we define this simple information => the table's name
-					$this->tableName="w_templates";
+					$this->tableName="leads";
 					
 					parent::__construct($rewriting);
 					
 					
-				$this->arrayFields["idw_templates"]=array
+				$this->arrayFields["idleads"]=array
 				(
 					"type"=>"int(11)",
 					"canBeNull"=>"NO",
 					"key"=>"PRI",
 					"default"=>"",
 					"extra"=>"auto_increment",
-					"formLabel"=>"idw_templates"
+					"formLabel"=>"idleads"
 				);
 			
-				$this->arrayFields["wt_name"]=array
+				$this->arrayFields["lead_date_save"]=array
 				(
-					"type"=>"varchar(100)",
+					"type"=>"mediumint(23)",
+					"canBeNull"=>"NO",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_date_save"
+				);
+			
+				$this->arrayFields["lead_mail"]=array
+				(
+					"type"=>"varchar(200)",
 					"canBeNull"=>"YES",
 					"key"=>"",
 					"default"=>"",
 					"extra"=>"",
-					"formLabel"=>"wt_name"
+					"formLabel"=>"lead_mail"
 				);
 			
-				$this->arrayFields["wt_bundle_name"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_bundle_name"
-				);
-			
-				$this->arrayFields["wt_assets_path_name"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_assets_path_name"
-				);
-			
-				$this->arrayFields["wt_model"]=array
-				(
-					"type"=>"text",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_model"
-				);
-			
-				$this->arrayFields["wt_vignette"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_vignette"
-				);
-			
-				$this->arrayFields["wt_description"]=array
-				(
-					"type"=>"varchar(1000)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_description"
-				);
-			
-				$this->arrayFields["wt_hook_sentence"]=array
+				$this->arrayFields["lead_lastname"]=array
 				(
 					"type"=>"varchar(150)",
 					"canBeNull"=>"YES",
 					"key"=>"",
 					"default"=>"",
 					"extra"=>"",
-					"formLabel"=>"wt_hook_sentence"
+					"formLabel"=>"lead_lastname"
 				);
 			
-				$this->arrayFields["wt_fdc"]=array
+				$this->arrayFields["lead_firsname"]=array
 				(
-					"type"=>"varchar(15)",
+					"type"=>"varchar(150)",
 					"canBeNull"=>"YES",
 					"key"=>"",
 					"default"=>"",
 					"extra"=>"",
-					"formLabel"=>"wt_fdc"
+					"formLabel"=>"lead_firsname"
+				);
+			
+				$this->arrayFields["lead_phone_mob"]=array
+				(
+					"type"=>"varchar(100)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_phone_mob"
+				);
+			
+				$this->arrayFields["lead_phone_fix"]=array
+				(
+					"type"=>"varchar(100)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_phone_fix"
+				);
+			
+				$this->arrayFields["lead_unsuscribed"]=array
+				(
+					"type"=>"tinyint(4)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"0",
+					"extra"=>"",
+					"formLabel"=>"lead_unsuscribed"
 				);
 			
 					
@@ -434,7 +424,7 @@
 					}
 					
 					
-					$sqlReq="SELECT * FROM w_templates ".$theWhere." LIMIT 1";
+					$sqlReq="SELECT * FROM leads ".$theWhere." LIMIT 1";
 					$prepa=$this->dbh->prepare($sqlReq);
 			
 					$prepa->execute($queryHelper);
@@ -523,7 +513,7 @@
 						//definition of the where clause
 						$theWhere="WHERE ".$this->getPrimaryKeyField()."=:".$this->getPrimaryKeyField();
 						$queryHelper=array(":".$this->getPrimaryKeyField().""=>$this->arrayFields[$this->getPrimaryKeyField()]["currentValue"]);
-						$sqlDelete="DELETE FROM w_templates ".$theWhere."";
+						$sqlDelete="DELETE FROM leads ".$theWhere."";
 						$prepa=$this->dbh->prepare($sqlDelete);
 			
 						if($prepa->execute($queryHelper))
@@ -836,7 +826,7 @@
 					}
 					
 					//now we can insert all the thing in the database
-					$sqlInsert="INSERT INTO w_templates(".implode(",",$toSave).") values(".implode(",",$toSaveBinding).")";
+					$sqlInsert="INSERT INTO leads(".implode(",",$toSave).") values(".implode(",",$toSaveBinding).")";
 					$insertion=$this->dbh->prepare($sqlInsert);
 					if($insertion->execute($queryHelper))
 					{
@@ -974,7 +964,7 @@
 						
 						$queryHelper[":".$this->getPrimaryKeyField().""]=$this->arrayFields[$this->getPrimaryKeyField()]["currentValue"];
 						
-						$sqlUpdate="UPDATE w_templates SET ".implode(",",$toSave)." WHERE ".$this->getPrimaryKeyField()."=:".$this->getPrimaryKeyField()."";
+						$sqlUpdate="UPDATE leads SET ".implode(",",$toSave)." WHERE ".$this->getPrimaryKeyField()."=:".$this->getPrimaryKeyField()."";
 						$update=$this->dbh->prepare($sqlUpdate);
 						if($update->execute($queryHelper))
 						{
@@ -1014,11 +1004,11 @@
 			
 			
 			/**
-			 * w_templatesDatasManager is a database object that list datas from the w_templates table
+			 * leadsDatasManager is a database object that list datas from the leads table
 			 *
 			 */
 			
-			class w_templatesDatasManager extends baseModel
+			class leadsDatasManager extends baseModel
 			{
 				
 				public $arrayElements=array();
@@ -1035,99 +1025,89 @@
 				public function __construct($rewriting=false)
 				{
 					//we define this simple information => the table's name
-					$this->tableName="w_templates";
+					$this->tableName="leads";
 					
 					parent::__construct($rewriting);
 					
 					
-				$this->arrayFields["idw_templates"]=array
+				$this->arrayFields["idleads"]=array
 				(
 					"type"=>"int(11)",
 					"canBeNull"=>"NO",
 					"key"=>"PRI",
 					"default"=>"",
 					"extra"=>"auto_increment",
-					"formLabel"=>"idw_templates"
+					"formLabel"=>"idleads"
 				);
 			
-				$this->arrayFields["wt_name"]=array
+				$this->arrayFields["lead_date_save"]=array
 				(
-					"type"=>"varchar(100)",
+					"type"=>"mediumint(23)",
+					"canBeNull"=>"NO",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_date_save"
+				);
+			
+				$this->arrayFields["lead_mail"]=array
+				(
+					"type"=>"varchar(200)",
 					"canBeNull"=>"YES",
 					"key"=>"",
 					"default"=>"",
 					"extra"=>"",
-					"formLabel"=>"wt_name"
+					"formLabel"=>"lead_mail"
 				);
 			
-				$this->arrayFields["wt_bundle_name"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_bundle_name"
-				);
-			
-				$this->arrayFields["wt_assets_path_name"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_assets_path_name"
-				);
-			
-				$this->arrayFields["wt_model"]=array
-				(
-					"type"=>"text",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_model"
-				);
-			
-				$this->arrayFields["wt_vignette"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_vignette"
-				);
-			
-				$this->arrayFields["wt_description"]=array
-				(
-					"type"=>"varchar(1000)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"wt_description"
-				);
-			
-				$this->arrayFields["wt_hook_sentence"]=array
+				$this->arrayFields["lead_lastname"]=array
 				(
 					"type"=>"varchar(150)",
 					"canBeNull"=>"YES",
 					"key"=>"",
 					"default"=>"",
 					"extra"=>"",
-					"formLabel"=>"wt_hook_sentence"
+					"formLabel"=>"lead_lastname"
 				);
 			
-				$this->arrayFields["wt_fdc"]=array
+				$this->arrayFields["lead_firsname"]=array
 				(
-					"type"=>"varchar(15)",
+					"type"=>"varchar(150)",
 					"canBeNull"=>"YES",
 					"key"=>"",
 					"default"=>"",
 					"extra"=>"",
-					"formLabel"=>"wt_fdc"
+					"formLabel"=>"lead_firsname"
+				);
+			
+				$this->arrayFields["lead_phone_mob"]=array
+				(
+					"type"=>"varchar(100)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_phone_mob"
+				);
+			
+				$this->arrayFields["lead_phone_fix"]=array
+				(
+					"type"=>"varchar(100)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"",
+					"extra"=>"",
+					"formLabel"=>"lead_phone_fix"
+				);
+			
+				$this->arrayFields["lead_unsuscribed"]=array
+				(
+					"type"=>"tinyint(4)",
+					"canBeNull"=>"YES",
+					"key"=>"",
+					"default"=>"0",
+					"extra"=>"",
+					"formLabel"=>"lead_unsuscribed"
 				);
 			
 					
@@ -1159,7 +1139,7 @@
 				public function refreshNumElements()
 				{
 					
-					$sqlCount="SELECT COUNT(*) AS numElements FROM w_templates ".$this->getWhereClause();
+					$sqlCount="SELECT COUNT(*) AS numElements FROM leads ".$this->getWhereClause();
 					
 					$prepa=$this->dbh->query($sqlCount);
 					$prepa->setFetchMode(PDO::FETCH_ASSOC);
@@ -1178,7 +1158,7 @@
 				
 				public function getDatas($page)
 				{
-					$sqlReq="SELECT * FROM w_templates ".$this->getWhereClause()." ".$this->getLimitClause($page)."";
+					$sqlReq="SELECT * FROM leads ".$this->getWhereClause()." ".$this->getLimitClause($page)."";
 					$prepa=$this->dbh->query($sqlReq);
 					$prepa->setFetchMode(PDO::FETCH_ASSOC);
 					$result=$prepa->fetchAll();
@@ -1187,7 +1167,7 @@
 				
 				public function getAllDatas($columns="*",$supReq="",$qh=false)
 				{
-					$sqlReq="SELECT ".$columns." FROM w_templates ".$supReq;
+					$sqlReq="SELECT ".$columns." FROM leads ".$supReq;
 					$prepa=$this->dbh->prepare($sqlReq);
 					if($qh)
 					{$prepa->execute($qh);}

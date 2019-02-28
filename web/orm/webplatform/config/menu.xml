@@ -6,6 +6,7 @@
      <aMenu tableName="db_instance" displayName="db_instance"/>
      <aMenu tableName="echeanciers" displayName="echeanciers"/>
      <aMenu tableName="features" displayName="features"/>
+     <aMenu tableName="leads" displayName="leads"/>
      <aMenu tableName="media_template" displayName="media_template"/>
      <aMenu tableName="medias" displayName="medias"/>
      <aMenu tableName="options" displayName="options"/>

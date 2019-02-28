@@ -1,0 +1,1 @@
+<?php $datasManager=new leadsDatasManager(); $oneElement=new leads(); ?>
