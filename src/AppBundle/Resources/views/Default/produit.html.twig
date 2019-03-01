@@ -13,68 +13,27 @@
     {{ parent() }}
     <script type="text/javascript">
 
+        var pathQuestion="{{ path('question') }}";
+        var CURRENT_PLAN;
+        var labelsTryModal={tryBt:"Créez gratuitement votre site","tryGRATOS":"Créez gratuitement votre site",default:"Créez votre site"};
         function init_produit()
         {
             //alert("produit");
             $("#sendQuestion").click(function()
             {
-                GV.showLoading();
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ path('question') }}",
-                    data:{email:$("#email").val(),message:$("#message").val()},
-                    success: function(retour)
-                    {
-
-                        GV.hideLoading();
-                        if(retour.result=="ok")
-                        {
-
-                            $(".fieldQuestionInput").val('');
-                            $(".fieldQuestionInput").removeClass("is-invalid");
-
-                            //$(".container-scroller").scrollTop(0);
-                            new Noty({
-
-                                text: retour.message,
-                                timeout:4000,
-                                type:"success"
-
-                            }).show();
-
-                        }
-                        else
-                        {
-
-                            var messageRetour="<strong>"+retour.message+"</strong>";
-                            if(retour.errors)
-                            {
-                                for(var erreur in retour.errors)
-                                {
-                                    console.log(erreur)
-                                    if(retour.errors[erreur].isValid==false)
-                                    {$('#'+erreur).addClass("is-invalid");}
-                                    //messageRetour+="<br/>"+retour.errors[erreur.];
-                                }
-                            }
-                            new Noty({
-
-                                text: messageRetour,
-                                timeout:4000,
-                                type:"error"
-
-                            }).show();
-                        }
-
-
-                    },
-                    dataType: 'json'
-                });
+                sendQuestion();
             });
 
-            $("#tryBt").click(function()
+            $(".getLeadAndCreate").click(function()
             {
-                $("#modalTry").modal('show');
+
+                saveLeadAndCreate(this);
+
+            });
+
+            $("#createWebsite").click(function()
+            {
+
             });
 
 
@@ -101,7 +60,7 @@
         <div class="row aer15">
             <div class="col-lg-6 col-md-6 col-xs-6"><h1 class="color1 bold">{{ infos.wt_hook_sentence }}</h1></div>
             <div class="col-lg-6 col-md-6 col-xs-6" id="contCta">
-                <a href="#" id="tryBt" class="btn pixel-btn btn-3 m-2">Essayer maintenant</a>
+                <a href="#" id="tryBt" class="getLeadAndCreate btn pixel-btn btn-3 m-2">Essayer maintenant</a>
                 <a href="#" class="btn pixel-btn m-2">Voir un aperçu</a>
             </div>
         </div>
@@ -177,7 +136,7 @@
                         <li>{% if opt.enabled==1 %} <i class=" color2 fa fa-check"></i> {% else %} <i class=" color3 fa fa-times"></i> {% endif %}<br/> {{ opt.label }}</li>
                     {% endfor %}
                 </ul>
-                <a href="#" class="btn pixel-btn">Créer mon site</a>
+                <a href="#" id="try{{ key }}" class="getLeadAndCreate btn pixel-btn">Créer mon site</a>
             </div>
         {% endfor %}
 
@@ -207,19 +166,24 @@
 
     <div class="modal fade" id="modalTry" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content noRadius">
+                <div class="modal-header noRadius">
                     <h5 class="modal-title" id="modalTryLabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    essayer
+                    <div class="form-group">
+                        <!--<label for="exampleInputEmail1">Adresse e-mail</label>-->
+                        <input type="email" class="form-control noRadius" id="emailTry" aria-describedby="emailHelp" placeholder="Renseignez votre adresse e-mail">
+                        <small  class="form-text text-muted"><input type="checkbox" isChecked="false"/> En cochant cette case, j'accepte que mon adresse e-mail soit enregistrée et serve à créer votre mon espace privé</small>
+
+                    </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer noRadius">
                     <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>-->
-                    <button type="button" class="btn btn-primary">OK</button>
+                    <button type="button" id="createWebsite" class="btn pixel-btn">Enregistrer</button>
                 </div>
             </div>
         </div>

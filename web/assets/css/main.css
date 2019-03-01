@@ -1,6 +1,12 @@
 .tac{text-align:center;}
 .relative{position:relative;}
 .bold{font-weight:bold;}
+.noRadius
+{
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+}
 
 .aer15{margin-top:15px;margin-bottom:15px;}
 .aer20{margin-top:20px;margin-bottom:20px;}

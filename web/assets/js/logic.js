@@ -18,6 +18,12 @@ GV.showLoading=function()
     $("#mainLoader").transition({ opacity: 1 });
 };
 
+GV.getJsId=function(toErase,subject)
+{
+    var retour=subject.replace(toErase,"");
+    return retour;
+};
+
 GV.hideLoading=function()
 {
     //$("#mainWrapper").css('opacity',0.5);
