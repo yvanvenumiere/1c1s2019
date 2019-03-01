@@ -4,10 +4,6 @@
     <list default="true" id="5f80c534-d8fe-48b0-811a-3a72612b0cc8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AjaxFrontController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AjaxFrontController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/css/main.css" afterPath="$PROJECT_DIR$/web/assets/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/css/produit.css" afterPath="$PROJECT_DIR$/web/assets/css/produit.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/js/logic.js" afterPath="$PROJECT_DIR$/web/assets/js/logic.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/js/produit.js" afterPath="$PROJECT_DIR$/web/assets/js/produit.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +22,7 @@
       <file leaf-file-name="produit.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
+            <state relative-caret-position="2353">
               <caret line="180" column="111" lean-forward="false" selection-start-line="180" selection-start-column="111" selection-end-line="180" selection-end-column="125" />
               <folding />
             </state>
@@ -36,8 +32,8 @@
       <file leaf-file-name="AjaxFrontController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AjaxFrontController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="36" column="99" lean-forward="true" selection-start-line="36" selection-start-column="99" selection-end-line="36" selection-end-column="99" />
+            <state relative-caret-position="167">
+              <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
               <folding>
                 <element signature="e#40#85#0#PHP" expanded="true" />
               </folding>
@@ -48,7 +44,7 @@
       <file leaf-file-name="Formcheck.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AlectisLab/UtilsBundle/Helpers/Formcheck.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
+            <state relative-caret-position="225">
               <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
               <folding />
             </state>
@@ -58,8 +54,8 @@
       <file leaf-file-name="produit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/js/produit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="966">
-              <caret line="76" column="24" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="24" />
+            <state relative-caret-position="184">
+              <caret line="114" column="21" lean-forward="true" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -78,7 +74,7 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
+            <state relative-caret-position="810">
               <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
@@ -88,7 +84,7 @@
       <file leaf-file-name="produit.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/css/produit.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
+            <state relative-caret-position="390">
               <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
               <folding />
             </state>
@@ -184,9 +180,9 @@
         <option value="&lt;14a83afd-f534-4cea-b5ec-733cfca66e48&gt;/var/www/christina-alpedhuez.dev01.illusio.fr/web/app/Resources/translations/messages.fr.yml" />
         <option value="$PROJECT_DIR$/web/assets/css/main.css" />
         <option value="$PROJECT_DIR$/web/assets/css/produit.css" />
-        <option value="$PROJECT_DIR$/web/assets/js/produit.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig" />
         <option value="$PROJECT_DIR$/web/assets/js/logic.js" />
+        <option value="$PROJECT_DIR$/web/assets/js/produit.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AjaxFrontController.php" />
       </list>
     </option>
@@ -222,6 +218,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -644,8 +642,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -821,12 +817,13 @@
       <workItem from="1551394988299" duration="1202000" />
       <workItem from="1551401719714" duration="2918000" />
       <workItem from="1551438722696" duration="3598000" />
-      <workItem from="1551452704883" duration="5827000" />
+      <workItem from="1551452704883" duration="5879000" />
+      <workItem from="1551463602020" duration="967000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164296000" />
+    <option name="totallyTimeSpent" value="165315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="6" />
@@ -837,12 +834,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44257274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1163,7 +1160,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AlectisLab/UtilsBundle/Helpers/Formcheck.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
+        <state relative-caret-position="225">
           <caret line="15" column="20" lean-forward="false" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
           <folding />
         </state>
@@ -1171,32 +1168,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
+        <state relative-caret-position="810">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/css/produit.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/js/produit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="76" column="24" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="180" column="111" lean-forward="false" selection-start-line="180" selection-start-column="111" selection-end-line="180" selection-end-column="125" />
           <folding />
         </state>
       </provider>
@@ -1209,10 +1182,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/css/produit.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Default/produit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2353">
+          <caret line="180" column="111" lean-forward="false" selection-start-line="180" selection-start-column="111" selection-end-line="180" selection-end-column="125" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/js/produit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="114" column="21" lean-forward="true" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AjaxFrontController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="36" column="99" lean-forward="true" selection-start-line="36" selection-start-column="99" selection-end-line="36" selection-end-column="99" />
+        <state relative-caret-position="167">
+          <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
           <folding>
             <element signature="e#40#85#0#PHP" expanded="true" />
           </folding>

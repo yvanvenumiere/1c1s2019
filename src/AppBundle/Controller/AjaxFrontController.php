@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AlectisLab\UtilsBundle\Helpers\UtilClass;
+use Monolog\Handler\Curl\Util;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +38,24 @@ class AjaxFrontController extends AlectisBaseController
             echo json_encode(array('result'=>"ko",'message'=>"Vérifiez d'avoir bien rempli tous les champs","errors"=>$checker->getResults()));exit;
         }
 
+        $this->ormManager->requireModel('users');
+        $this->ormManager->requireModel('profiles');
+
+        $profil=new \profiles(UtilClass::rewritingOrNot());
+        $profil->initFromDatas(array("profil_code"=>"CLIENT"));
+
+        $user=new \users(UtilClass::rewritingOrNot());
+        if($user->initFromDatas(array('user_mail'=>$_POST['emailTry'])))
+        {
+            echo json_encode(array('result'=>"ko",'message'=>"Cet adresse email est déjà utilisée pour un compte, si c'est le votre connectez vous et créer un nouveau site depuis votre espace membre"));exit;
+
+        }
+
+        $this->createLead($_POST['emailTry']);
+
+        echo json_encode(array('result'=>"ok",'message'=>"Votre site a bien été créé"));exit;
+
+
 
     }
 
@@ -56,15 +75,7 @@ class AjaxFrontController extends AlectisBaseController
             echo json_encode(array('result'=>"ko",'message'=>"Vérifiez d'avoir bien rempli tous les champs","errors"=>$checker->getResults()));exit;
         }
 
-        $this->ormManager->requireModel('leads');
-        $lead=new \leads(UtilClass::rewritingOrNot());
-        if(!$lead->initFromDatas(array("lead_mail"=>$_POST['email'])))
-        {
-            $lead->set('lead_mail',$_POST['email']);
-            $lead->set('lead_date_save',time());
-            $lead->set('lead_utm_source',$_SERVER['HTTP_REFERER']);
-            $lead->save();
-        }
+        $this->createLead($_POST['email']);
 
 
 
@@ -73,6 +84,19 @@ class AjaxFrontController extends AlectisBaseController
 
         echo json_encode(array('result'=>"ok",'message'=>"Message reçu, nous vous répondrons dans les plus brefs délais"));exit;
 
+    }
+
+    private function createLead($email)
+    {
+        $this->ormManager->requireModel('leads');
+        $lead=new \leads(UtilClass::rewritingOrNot());
+        if(!$lead->initFromDatas(array("lead_mail"=>$email)))
+        {
+            $lead->set('lead_mail',$email);
+            $lead->set('lead_date_save',time());
+            $lead->set('lead_utm_source',$_SERVER['HTTP_REFERER']);
+            $lead->save();
+        }
     }
 
 

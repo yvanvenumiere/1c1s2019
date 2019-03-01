@@ -67,7 +67,7 @@ function saveLeadAndCreate(domElem)
         $("#modalTryLabel").html(labelsTryModal['default']);
     }
     CURRENT_PLAN=GV.getJsId("try",$(domElem).attr('id'));
-    alert(CURRENT_PLAN);
+
 
 
 }
@@ -87,8 +87,8 @@ function createWebsite()
             if(retour.result=="ok")
             {
 
-                $(".fieldQuestionInput").val('');
-                $(".fieldQuestionInput").removeClass("is-invalid");
+                $(".fieldCreateInput").val('');
+                $(".fieldCreateInput").removeClass("is-invalid");
 
                 //$(".container-scroller").scrollTop(0);
                 new Noty({
