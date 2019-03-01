@@ -14,6 +14,7 @@
     <script type="text/javascript">
 
         var pathQuestion="{{ path('question') }}";
+        var pathCreate="{{ path('create_website') }}";
         var CURRENT_PLAN;
         var labelsTryModal={tryBt:"Créez gratuitement votre site","tryGRATOS":"Créez gratuitement votre site",default:"Créez votre site"};
         function init_produit()
@@ -33,7 +34,7 @@
 
             $("#createWebsite").click(function()
             {
-
+                createWebsite();
             });
 
 
@@ -168,7 +169,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content noRadius">
                 <div class="modal-header noRadius">
-                    <h5 class="modal-title" id="modalTryLabel"></h5>
+                    <h5 class="modal-title size1 bold" id="modalTryLabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -176,8 +177,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <!--<label for="exampleInputEmail1">Adresse e-mail</label>-->
-                        <input type="email" class="form-control noRadius" id="emailTry" aria-describedby="emailHelp" placeholder="Renseignez votre adresse e-mail">
-                        <small  class="form-text text-muted"><input type="checkbox" isChecked="false"/> En cochant cette case, j'accepte que mon adresse e-mail soit enregistrée et serve à créer votre mon espace privé</small>
+                        <input type="email" class="fieldCreateInput form-control noRadius" id="emailTry" aria-describedby="emailHelp" placeholder="Renseignez votre adresse e-mail">
+                        <small  class="form-text fieldCreateInput text-muted" id="conditionsTry"><input class="customcheckbox" type="checkbox" id="crwcb" ischecked="false"/> En cochant cette case, j'accepte que mon adresse e-mail soit enregistrée et serve à créer mon espace privé</small>
 
                     </div>
                 </div>

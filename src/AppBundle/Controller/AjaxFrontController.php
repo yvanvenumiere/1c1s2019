@@ -18,6 +18,29 @@ class AjaxFrontController extends AlectisBaseController
 
 
     /**
+     * @Route("/create-website", name="create_website")
+     */
+    public function cwsAction(Request $request)
+    {
+        $checker=new Formcheck();
+        $checker->addCheck("formule",$_POST['formule'],"simple");
+        $checker->addCheck("emailTry",$_POST['emailTry'],"mail");
+
+        $checker->addCheck("conditionsTry",$_POST['conditionsTry'],"simple");
+
+        if($_POST['conditionsTry']!="true")
+        {
+            $checker->arrayResult["conditionsTry"]=array("isValid"=>false);
+        }
+        if(!$checker->isValid())
+        {
+            echo json_encode(array('result'=>"ko",'message'=>"Vérifiez d'avoir bien rempli tous les champs","errors"=>$checker->getResults()));exit;
+        }
+
+
+    }
+
+    /**
      * @Route("/question", name="question")
      */
     public function questionAction(Request $request)

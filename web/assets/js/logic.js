@@ -8,6 +8,18 @@ $(document).ready(function()
     GV.launchFunction();//function qui est lancée sur toutes les pages
     //handleSubmenu();
 
+    $(".customcheckbox").click(function()
+    {
+        if($(this).attr('ischecked')=="false")
+        {
+            $(this).attr('ischecked',"true");
+        }
+        else
+        {
+            $(this).attr('ischecked',"false");
+        }
+    });
+
 
 });
 
@@ -30,5 +42,12 @@ GV.hideLoading=function()
     $("#mainWrapper").transition({ opacity: 1 });
     $("#mainLoader").transition({ opacity: 0 });
 };
+
+GV.hightlightError=function(theselector)
+{
+    $(theselector).css('color',"red !important");
+};
+
+
 
 

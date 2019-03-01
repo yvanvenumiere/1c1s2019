@@ -20,6 +20,12 @@
     min-height:62px;
 }
 
+#conditionsTry
+{
+    border:1px solid transparent;
+}
+.is-invalid{border-color:#dc3545 !important;}
+
 .contact-form-area input, .contact-form-area textarea
 {
     background-color:#FFFFFF !important;
