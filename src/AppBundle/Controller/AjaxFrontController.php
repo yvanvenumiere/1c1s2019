@@ -12,6 +12,8 @@ use AlectisLab\UtilsBundle\Helpers\Formcheck;
 use AlectisLab\AcmsBundle\Acms\ItemProxy;
 use AlectisLab\AcmsBundle\Acms\AcmsGlobalHelper;
 use AppBundle\Helpers\CustomQueries;
+use AppBundle\Helpers\ToolBox;
+
 
 
 class AjaxFrontController extends AlectisBaseController
@@ -23,10 +25,11 @@ class AjaxFrontController extends AlectisBaseController
      */
     public function cwsAction(Request $request)
     {
+        echo "<pre>";var_dump(ToolBox::getDbInfos("dbi1"));exit;
         $checker=new Formcheck();
         $checker->addCheck("formule",$_POST['formule'],"simple");
         $checker->addCheck("emailTry",$_POST['emailTry'],"mail");
-
+        $checker->addCheck("idTemplate",$_POST['idTemplate'],"nombre");
         $checker->addCheck("conditionsTry",$_POST['conditionsTry'],"simple");
 
         if($_POST['conditionsTry']!="true")
@@ -40,6 +43,8 @@ class AjaxFrontController extends AlectisBaseController
 
         $this->ormManager->requireModel('users');
         $this->ormManager->requireModel('profiles');
+        $this->ormManager->requireModel('w_templates');
+
 
         $profil=new \profiles(UtilClass::rewritingOrNot());
         $profil->initFromDatas(array("profil_code"=>"CLIENT"));
@@ -51,7 +56,39 @@ class AjaxFrontController extends AlectisBaseController
 
         }
 
+        $template=new \w_templates(UtilClass::rewritingOrNot());
+        if(!$template->initFromDatas(array("idw_templates"=>$_POST['idTemplate'])))
+        {
+            echo json_encode(array('result'=>"ko",'message'=>"Création de votre site web impossible pour le moment"));exit;
+
+        }
+
         $this->createLead($_POST['emailTry']);
+
+        $expMail=explode("@",$_POST['emailTry']);
+
+
+        $generatedMdp=$expMail[0]."-".strlen($expMail[1])."@".substr(time(),rand(1,4),rand(1,4));
+        $user->set('user_mail',$_POST['emailTry']);
+        $user->set('user_mdp',md5($generatedMdp));
+        $user->set('user_date_creation',time());
+        $user->set('profiles_idprofil',$profil->get('idprofil'));
+        if(!$user->save())
+        {
+            echo json_encode(array('result'=>"ko",'message'=>"Création de votre site web impossible pour le moment"));exit;
+        }
+
+
+
+        $this->ormManager->requireModel('website');
+        $website=new \website(UtilClass::rewritingOrNot());
+        $website->set('website_date_creation',time());
+        $website->set('users_idusers',$user->get('idusers'));
+        $website->set('w_templates_idw_templates',$template->get('idw_templates'));
+
+
+
+        //$user->
 
         echo json_encode(array('result'=>"ok",'message'=>"Votre site a bien été créé"));exit;
 

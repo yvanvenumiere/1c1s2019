@@ -61,24 +61,14 @@
 					"formLabel"=>"dbi_user"
 				);
 			
-				$this->arrayFields["dbi_mdp"]=array
+				$this->arrayFields["dbi_current_num_project"]=array
 				(
-					"type"=>"varchar(45)",
+					"type"=>"int(11)",
 					"canBeNull"=>"YES",
 					"key"=>"",
-					"default"=>"",
+					"default"=>"0",
 					"extra"=>"",
-					"formLabel"=>"dbi_mdp"
-				);
-			
-				$this->arrayFields["dbi_db"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"dbi_db"
+					"formLabel"=>"dbi_current_num_project"
 				);
 			
 					
@@ -1030,24 +1020,14 @@
 					"formLabel"=>"dbi_user"
 				);
 			
-				$this->arrayFields["dbi_mdp"]=array
+				$this->arrayFields["dbi_current_num_project"]=array
 				(
-					"type"=>"varchar(45)",
+					"type"=>"int(11)",
 					"canBeNull"=>"YES",
 					"key"=>"",
-					"default"=>"",
+					"default"=>"0",
 					"extra"=>"",
-					"formLabel"=>"dbi_mdp"
-				);
-			
-				$this->arrayFields["dbi_db"]=array
-				(
-					"type"=>"varchar(45)",
-					"canBeNull"=>"YES",
-					"key"=>"",
-					"default"=>"",
-					"extra"=>"",
-					"formLabel"=>"dbi_db"
+					"formLabel"=>"dbi_current_num_project"
 				);
 			
 					

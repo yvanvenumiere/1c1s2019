@@ -79,7 +79,7 @@ function createWebsite()
     $.ajax({
         type: 'POST',
         url:pathCreate,
-        data:{emailTry:$("#emailTry").val(),formule:CURRENT_PLAN,conditionsTry:$("#crwcb").attr('ischecked')},
+        data:{emailTry:$("#emailTry").val(),formule:CURRENT_PLAN,conditionsTry:$("#crwcb").attr('ischecked'),idTemplate:ID_TEMPLATE},
         success: function(retour)
         {
 
